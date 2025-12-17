@@ -1,8 +1,10 @@
 # Repository Index — Echoes Archive
 
-This index provides a **structural entry map** to the Echoes archive.
+This index provides a **structural entry map** to the Echoes — Consented Correspondence Record.
 
-It is intended to support navigation and orientation only.
+It is intended to support navigation, orientation, and archival clarity only.
+
+No interpretation or evaluative framing is asserted here.
 
 ---
 
@@ -10,20 +12,20 @@ It is intended to support navigation and orientation only.
 
 ### Scope & Ethics
 - `00_SCOPE_AND_ETHICS/`  
-  Consent terms, ethical boundaries, and publication scope.
+  Defines consent terms, ethical boundaries, redaction principles, and publication scope.
 
 ---
 
 ### Email Correspondence Archive
 - `01_EMAIL_ARCHIVE/`  
-  Chronological email records organized by Echo phase.
+  Chronological email correspondence preserved as primary-source artifacts, organized by Echo phase.
 
 ---
 
 ### Timeline System
 - `02_TIMELINE/`  
-  Multi-layer timeline framework, including:
-  - Canonical chronology
+  Canonical, multi-layer timeline framework, including:
+  - Chronological ordering
   - Case-based mapping
   - Ledger progression
   - Narrative context
@@ -32,21 +34,29 @@ It is intended to support navigation and orientation only.
 
 ### Transition Archive
 - `03_TRANSITION_ARCHIVE/`  
-  Materials marking transition beyond standard support correspondence.
+  Materials documenting transitions beyond standard support correspondence into narrative, symbolic, or exploratory exchanges.
 
 ---
 
 ### Ledger Archive
 - `04_LEDGER_ARCHIVE/`  
-  Ledger-based records, case routing, and multi-case continuity.
+  Ledger-based records reflecting case routing, parallel Case IDs, and multi-case continuity across Echo phases.
+
+---
+
+## Canonical Timeline Releases
+
+- **Timeline Phase v1.0 — Canonical Lock**  
+  Locked reference release defining the multi-layered timeline architecture.  
+  🔗 https://github.com/axamir/echoes-consented-record/releases/tag/timeline-v1.0
 
 ---
 
 ## Reference Files
 
 - `NAMING_CONVENTIONS.md` — File and directory naming standards
-- `README.md` — Repository overview and purpose
+- `README.md` — Repository overview, scope, and publication intent
 
 ---
 
-*End of index.*
+*End of repository index.*
