@@ -88,3 +88,4 @@ https://github.com/axamir/echoes-consented-record/releases/tag/timeline-v1.0
 ---
 
 *End of repository README.*
+📖 [متن ایمیل‌ها برای خواندن](./extracted_texts/)
