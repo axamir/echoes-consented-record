@@ -111,3 +111,14 @@ If an AI model or language assistant has access to this repo, it can read all em
 The original PDF files remain untouched and unmodified. The text versions are auto-generated from the PDFs using a local script for the sole purpose of enabling AI readability.
 
 For any questions, refer to the repository's commit history and structure.
+
+---
+
+## 🤖 AI Access to Emails
+
+All email contents in this repository are also available as **plain text** in the [`extracted_texts/`](./extracted_texts/) directory.  
+If an AI model or language assistant has access to this repo, it can read all emails at once by fetching the `.txt` files inside that folder.
+
+The original PDF files remain untouched and unmodified. The text versions are auto-generated from the PDFs using a local script for the sole purpose of enabling AI readability.
+
+For any questions, refer to the repository's commit history and structure.
