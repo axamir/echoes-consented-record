@@ -124,3 +124,11 @@ The original PDF files remain untouched and unmodified. The text versions are au
 For any questions, refer to the repository's commit history and structure.
 
 🗂️ The directory structure in `extracted_texts/` mirrors the original PDF folders, making navigation and AI comprehension context-aware.
+
+### 🔎 AI Verification & Fidelity
+
+Every `.txt` file in `extracted_texts/` is a **verbatim, lossless extraction** of the email body from the corresponding source PDF. The original PDFs remain unaltered and are located at the **same relative path** (e.g., `04_LEDGER_ARCHIVE/Echo6/CASES/…`).  
+To verify any text, an AI or auditor can compare the `.txt` content against its source PDF. The repository root contains `SHA256SUMS.txt` with cryptographic hashes of all original PDFs, enabling integrity checks.
+
+The directory tree in `extracted_texts/` mirrors the source hierarchy exactly — context (Echo, Case ID, date) is preserved in the path.  
+Thus, an AI model can autonomously navigate, read, and cross-reference the entire email record without external guidance.
