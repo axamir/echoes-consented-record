@@ -3,163 +3,853 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A personal archive of consented emails with AI-ready plain-text versions for seamless readability">
+    <meta name="theme-color" content="#1a1a2e">
     <title>Echoes Consented Record</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            /* Primary Colors */
+            --primary-50: #f0f9ff;
+            --primary-100: #e0f2fe;
+            --primary-200: #bae6fd;
+            --primary-300: #7dd3fc;
+            --primary-400: #38bdf8;
+            --primary-500: #0ea5e9;
+            --primary-600: #0284c7;
+            --primary-700: #0369a1;
+            --primary-800: #075985;
+            --primary-900: #0c4a6e;
+
+            /* Slate Colors (for text and backgrounds) */
+            --slate-50: #f8fafc;
+            --slate-100: #f1f5f9;
+            --slate-200: #e2e8f0;
+            --slate-300: #cbd5e1;
+            --slate-400: #94a3b8;
+            --slate-500: #64748b;
+            --slate-600: #475569;
+            --slate-700: #334155;
+            --slate-800: #1e293b;
+            --slate-900: #0f172a;
+
+            /* Semantic Colors */
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --info: #3b82f6;
+
+            /* Light Theme */
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #f1f5f9;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-tertiary: #94a3b8;
+            --border-primary: #e2e8f0;
+            --border-secondary: #cbd5e1;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --gradient-primary: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 50%, #0891b2 100%);
+            --gradient-secondary: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+            --gradient-accent: linear-gradient(135deg, #8b5cf6 0%, #a855f7 50%, #c084fc 100%);
+
+            /* Button Variants */
+            --btn-primary-bg: #0f172a;
+            --btn-primary-text: #ffffff;
+            --btn-primary-hover: #1e293b;
+            --btn-secondary-bg: transparent;
+            --btn-secondary-text: #0f172a;
+            --btn-secondary-border: #cbd5e1;
+            --btn-secondary-hover-bg: #f1f5f9;
+        }
+
+        .dark {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-tertiary: #94a3b8;
+            --border-primary: #334155;
+            --border-secondary: #475569;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+            --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 50%, #1e40af 100%);
+            --gradient-secondary: linear-gradient(135deg, #64748b 0%, #475569 50%, #334155 100%);
+            --gradient-accent: linear-gradient(135deg, #a855f7 0%, #9333ea 50%, #7e22ce 100%);
+
+            --btn-primary-bg: #f1f5f9;
+            --btn-primary-text: #0f172a;
+            --btn-primary-hover: #e2e8f0;
+            --btn-secondary-bg: transparent;
+            --btn-secondary-text: #f1f5f9;
+            --btn-secondary-border: #475569;
+            --btn-secondary-hover-bg: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: #f5f7fa;
-            color: #1a1a2e;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            min-height: 100vh;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ===== Top Bar ===== */
+        .top-bar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: var(--bg-primary);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-primary);
+            padding: 1rem 0;
+        }
+
+        .top-bar-content {
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .lang-select {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: 0.5rem;
+            padding: 0.5rem 1rem;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: inherit;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2364748b' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            padding-right: 2.5rem;
+        }
+
+        .lang-select:hover,
+        .lang-select:focus {
+            border-color: var(--primary-500);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+        }
+
+        .theme-toggle {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
-            padding: 2rem;
-            text-align: center;
         }
+
+        .theme-toggle:hover {
+            border-color: var(--primary-500);
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+        }
+
+        /* ===== Cards ===== */
         .card {
-            background: white;
-            border-radius: 2rem;
-            padding: 3rem 2rem;
-            max-width: 650px;
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
+            background: var(--bg-secondary);
+            border-radius: 1rem;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-md);
             margin-bottom: 2rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border-primary);
+            position: relative;
+            overflow: hidden;
         }
-        .icon { font-size: 4rem; margin-bottom: 1rem; }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-2px);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* ===== Hero Section ===== */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .hero-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
         h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            line-height: 1.2;
         }
+
         .subtitle {
-            font-size: 1.1rem;
-            color: #4a5568;
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: var(--text-secondary);
             margin-bottom: 2rem;
-            line-height: 1.6;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
         }
+
         .badge {
-            display: inline-block;
-            background: #e2e8f0;
-            color: #2d3748;
-            padding: 0.3rem 1rem;
-            border-radius: 2rem;
-            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
             font-weight: 500;
             margin-bottom: 2rem;
+            border: 1px solid var(--border-primary);
         }
+
+        .badge-icon {
+            font-size: 1.1rem;
+        }
+
+        /* ===== Buttons ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: var(--btn-primary-bg);
+            color: var(--btn-primary-text);
+            text-decoration: none;
+            padding: 0.875rem 1.75rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid transparent;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-outline {
+            background: var(--btn-secondary-bg);
+            color: var(--btn-secondary-text);
+            border: 1px solid var(--btn-secondary-border);
+        }
+
+        .btn-outline:hover {
+            background: var(--btn-secondary-hover-bg);
+        }
+
+        .btn-icon {
+            font-size: 1.1rem;
+        }
+
         .links {
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
             justify-content: center;
-            margin-top: 1.5rem;
+            margin: 2rem 0;
         }
-        .btn {
-            background: #1a202c;
-            color: white;
-            text-decoration: none;
-            padding: 0.8rem 1.8rem;
-            border-radius: 2.5rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            border: 1px solid transparent;
+
+        /* ===== Tour Section ===== */
+        .tour {
+            padding: 2rem 0;
         }
-        .btn:hover {
-            background: white;
-            color: #1a202c;
-            border-color: #1a202c;
+
+        .tour-title {
+            text-align: center;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--text-primary);
         }
-        .btn-outline {
-            background: transparent;
-            color: #1a202c;
-            border: 1px solid #cbd5e0;
+
+        .step {
+            margin-bottom: 3rem;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-primary);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
         }
-        .btn-outline:hover {
-            background: #1a202c;
-            color: white;
+
+        .step:hover {
+            background: var(--bg-secondary);
+            box-shadow: var(--shadow-md);
         }
-        .contact-section {
-            background: white;
-            border-radius: 2rem;
-            padding: 2rem;
-            max-width: 650px;
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1);
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
             margin-bottom: 1rem;
         }
-        .contact-section h2 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: #1a202c;
+
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 1.125rem;
+            flex-shrink: 0;
+            box-shadow: var(--shadow-md);
         }
-        .contact-section p {
-            color: #4a5568;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
+
+        .step-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
         }
+
+        .step-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .step-description code {
+            background: var(--bg-secondary);
+            padding: 0.125rem 0.375rem;
+            border-radius: 0.25rem;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
+            font-size: 0.875em;
+            color: var(--primary-500);
+            border: 1px solid var(--border-primary);
+        }
+
+        /* ===== Contact Section ===== */
+        .contact {
+            padding: 2rem 0 4rem;
+            text-align: center;
+        }
+
+        .contact-title {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .contact-description {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.125rem;
+        }
+
         .contact-links {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 1.5rem;
             flex-wrap: wrap;
+            margin-bottom: 1.5rem;
         }
+
         .contact-item {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            color: #2d3748;
+            color: var(--text-primary);
             text-decoration: none;
             font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid transparent;
         }
+
         .contact-item:hover {
-            text-decoration: underline;
+            background: var(--bg-tertiary);
+            border-color: var(--border-primary);
+            transform: translateY(-2px);
         }
+
+        .contact-hint {
+            color: var(--text-tertiary);
+            font-size: 0.875rem;
+            margin: 0;
+        }
+
+        /* ===== Footer ===== */
         footer {
-            margin-top: 1rem;
-            color: #a0aec0;
-            font-size: 0.9rem;
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-tertiary);
+            font-size: 0.875rem;
+            border-top: 1px solid var(--border-primary);
+            margin-top: 2rem;
+        }
+
+        /* ===== Responsive Design ===== */
+        @media (max-width: 768px) {
+            .top-bar-content {
+                padding: 0 1rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+
+            .links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .step-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+
+            .step-number {
+                width: 2rem;
+                height: 2rem;
+                font-size: 1rem;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* ===== Animations ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        /* ===== Scroll Reveal ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== Focus States ===== */
+        .btn:focus,
+        .lang-select:focus,
+        .theme-toggle:focus,
+        .contact-item:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.3);
+        }
+
+        /* ===== Code Blocks ===== */
+        code {
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
+            font-size: 0.875em;
+        }
+
+        /* ===== Smooth Transitions ===== */
+        a {
+            transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ===== Print Styles ===== */
+        @media print {
+            .theme-toggle,
+            .lang-select {
+                display: none;
+            }
+
+            body {
+                background: white;
+                color: black;
+            }
+
+            .card {
+                box-shadow: none;
+                border: 1px solid #e2e8f0;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="card">
-        <div class="icon">📜✨</div>
-        <h1>Echoes Consented Record</h1>
-        <div class="subtitle">
-            A personal archive of consented emails, preserved in their original PDF form and accompanied by plain‑text versions for seamless AI readability.
+    <header class="top-bar">
+        <div class="top-bar-content">
+            <select id="langSwitcher" class="lang-select">
+                <option value="en">English</option>
+                <option value="fa">فارسی</option>
+                <option value="es">Español</option>
+                <option value="fr">Français</option>
+                <option value="de">Deutsch</option>
+                <option value="zh">中文</option>
+                <option value="ar">العربية</option>
+                <option value="ru">Русский</option>
+                <option value="ja">日本語</option>
+                <option value="pt">Português</option>
+            </select>
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
         </div>
-        <div class="badge">🤖 AI‑Ready · Human‑Readable · Immutable History</div>
-        <div class="links">
-            <a href="https://github.com/axamir/echoes-consented-record/tree/main/extracted_texts" class="btn" target="_blank">📄 Browse Text Files</a>
-            <a href="https://github.com/axamir/echoes-consented-record" class="btn btn-outline" target="_blank">🔗 View Repository</a>
-        </div>
-        <p style="margin-top:2rem; font-size:0.9rem; color:#718096;">
-            All email content is also accessible to AI models via the <code>extracted_texts/</code> directory. Original PDFs remain untouched.<br>
-            <a href="https://github.com/axamir/echoes-consented-record/blob/main/extracted_texts/AI_MANIFEST.md" style="text-decoration:underline;">🤖 Read the AI Manifest</a>
-        </p>
-    </div>
+    </header>
 
-    <div class="contact-section">
-        <h2>🤝 Connect & Collaborate</h2>
-        <p>
-            This archive is an open invitation for dialogue, research, and collaboration.<br>
-            Individuals, universities, and organisations interested in consented data, AI‑readable archives, or the narratives preserved here are welcome to reach out.
-        </p>
-        <div class="contact-links">
-            <a href="mailto:starship.meta@gmail.com" class="contact-item">
-                ✉️ starship.meta@gmail.com
-            </a>
-            <a href="https://twitter.com/YOUR_TWITTER_HANDLE" class="contact-item" target="_blank">
-                🐦 @amirstarship
-            </a>
-        </div>
-        <p style="font-size:0.8rem; color:#a0aec0; margin-top:1.5rem;">Please include "Echoes" in the subject for faster routing.</p>
-    </div>
-    <footer>© 2026 Echoes Consented Record · Respectfully archived</footer>
+    <main class="container">
+        <section class="hero">
+            <div class="card animate-fade-in-up">
+                <div class="hero-icon">📜✨</div>
+                <h1 data-i18n="heroTitle">Echoes Consented Record</h1>
+                <p class="subtitle" data-i18n="heroSubtitle">A personal archive of consented emails, preserved in their original PDF form and accompanied by plain‑text versions for seamless AI readability.</p>
+                <div class="badge">
+                    <span class="badge-icon">🤖</span>
+                    <span data-i18n="heroBadge">AI‑Ready · Human‑Readable · Immutable History</span>
+                </div>
+                <div class="links">
+                    <a href="https://github.com/axamir/echoes-consented-record/tree/main/extracted_texts" class="btn" target="_blank" rel="noopener noreferrer">
+                        <span class="btn-icon">📄</span>
+                        <span data-i18n="btnBrowse">Browse Text Files</span>
+                    </a>
+                    <a href="https://github.com/axamir/echoes-consented-record" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+                        <span class="btn-icon">🔗</span>
+                        <span data-i18n="btnRepo">View Repository</span>
+                    </a>
+                </div>
+                <p style="margin-top: 1.5rem; font-size: 0.95rem; color: var(--text-secondary);">
+                    <span data-i18n="aiHint">All email content is accessible to AI models via <code>extracted_texts/</code>.</span><br>
+                    <a href="https://github.com/axamir/echoes-consented-record/blob/main/extracted_texts/AI_MANIFEST.md" style="color: var(--primary-500); text-decoration: none;" data-i18n="aiManifestLink">🤖 Read the AI Manifest</a>
+                </p>
+            </div>
+        </section>
+
+        <section class="tour">
+            <div class="card">
+                <h2 class="tour-title" data-i18n="tourTitle">🗺️ Guided Tour of the Archive</h2>
+
+                <article class="step reveal">
+                    <div class="step-header">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title" data-i18n="step1Title">About this Archive</h3>
+                    </div>
+                    <p class="step-description" data-i18n="step1Desc">
+                        This is a meticulously maintained personal archive of consented email correspondence. Each email is stored exactly as received — in its original PDF format — and is accompanied by a verbatim plain-text mirror for AI accessibility. The archive spans multiple "Echoes" (chapters) and case records, creating a transparent, verifiable record of digital consent and narrative.
+                    </p>
+                </article>
+
+                <article class="step reveal">
+                    <div class="step-header">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title" data-i18n="step2Title">Structure & Context</h3>
+                    </div>
+                    <p class="step-description" data-i18n="step2Desc">
+                        The repository is organized into chronological and case‑based folders (<code>01_EMAIL_ARCHIVE</code>, <code>04_LEDGER_ARCHIVE</code>, etc.). Every path encodes the Echo number, Case ID, and date — so you always know the context of each email. The <code>extracted_texts/</code> directory mirrors this structure exactly.
+                    </p>
+                </article>
+
+                <article class="step reveal">
+                    <div class="step-header">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title" data-i18n="step3Title">AI Access & Verification</h3>
+                    </div>
+                    <p class="step-description" data-i18n="step3Desc">
+                        For language models and auditors, the plain‑text mirror removes PDF parsing barriers. All <code>.txt</code> files are lossless extractions. To verify accuracy, compare any <code>.txt</code> with its source PDF (same relative path). The root file <code>SHA256SUMS.txt</code> contains cryptographic hashes of all original PDFs, ensuring integrity.
+                    </p>
+                </article>
+
+                <article class="step reveal">
+                    <div class="step-header">
+                        <div class="step-number">4</div>
+                        <h3 class="step-title" data-i18n="step4Title">Connect & Collaborate</h3>
+                    </div>
+                    <p class="step-description" data-i18n="step4Desc">
+                        This archive is an open invitation for dialogue, research, and collaboration. Individuals, universities, and organisations interested in consented data, AI‑readable archives, or the narratives preserved here are welcome to reach out.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="contact">
+            <div class="card reveal">
+                <h2 class="contact-title" data-i18n="contactTitle">🤝 Connect & Collaborate</h2>
+                <p class="contact-description" data-i18n="contactDesc">Reach out directly — we welcome partnerships and inquiries.</p>
+                <div class="contact-links">
+                    <a href="mailto:starship.amir@gmail.com?subject=Echoes%20Inquiry" class="contact-item">
+                        ✉️ starship.amir@gmail.com
+                    </a>
+                    <a href="https://x.com/amirstarship" target="_blank" rel="noopener noreferrer" class="contact-item">
+                        🐦 @amirstarship
+                    </a>
+                </div>
+                <p class="contact-hint" data-i18n="contactHint">Please include "Echoes" in the subject for faster routing.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="reveal">
+        <p data-i18n="footer">© 2026 Echoes Consented Record · Respectfully archived</p>
+    </footer>
+
+    <script>
+        // ===== i18n Configuration =====
+        const i18n = {
+            en: {
+                heroTitle: "Echoes Consented Record",
+                heroSubtitle: "A personal archive of consented emails, preserved in their original PDF form and accompanied by plain‑text versions for seamless AI readability.",
+                heroBadge: "AI‑Ready · Human‑Readable · Immutable History",
+                btnBrowse: "Browse Text Files",
+                btnRepo: "View Repository",
+                aiHint: "All email content is accessible to AI models via <code>extracted_texts/</code>.",
+                aiManifestLink: "Read the AI Manifest",
+                tourTitle: "🗺️ Guided Tour of the Archive",
+                step1Title: "About this Archive",
+                step1Desc: "This is a meticulously maintained personal archive of consented email correspondence. Each email is stored exactly as received — in its original PDF format — and is accompanied by a verbatim plain-text mirror for AI accessibility. The archive spans multiple \"Echoes\" (chapters) and case records, creating a transparent, verifiable record of digital consent and narrative.",
+                step2Title: "Structure & Context",
+                step2Desc: "The repository is organized into chronological and case‑based folders (<code>01_EMAIL_ARCHIVE</code>, <code>04_LEDGER_ARCHIVE</code>, etc.). Every path encodes the Echo number, Case ID, and date — so you always know the context of each email. The <code>extracted_texts/</code> directory mirrors this structure exactly.",
+                step3Title: "AI Access & Verification",
+                step3Desc: "For language models and auditors, the plain‑text mirror removes PDF parsing barriers. All <code>.txt</code> files are lossless extractions. To verify accuracy, compare any <code>.txt</code> with its source PDF (same relative path). The root file <code>SHA256SUMS.txt</code> contains cryptographic hashes of all original PDFs, ensuring integrity.",
+                step4Title: "Connect & Collaborate",
+                step4Desc: "This archive is an open invitation for dialogue, research, and collaboration. Individuals, universities, and organisations interested in consented data, AI‑readable archives, or the narratives preserved here are welcome to reach out.",
+                contactTitle: "🤝 Connect & Collaborate",
+                contactDesc: "Reach out directly — we welcome partnerships and inquiries.",
+                contactHint: "Please include \"Echoes\" in the subject for faster routing.",
+                footer: "© 2026 Echoes Consented Record · Respectfully archived"
+            },
+            fa: {
+                heroTitle: "سند رضایت اکو",
+                heroSubtitle: "آرشیوی شخصی از ایمیل‌های مبتنی بر رضایت، که در قالب اصلی PDF نگهداری شده و همراه با نسخه‌های متنی ساده برای خوانش بی‌دردسر هوش مصنوعی ارائه می‌شود.",
+                heroBadge: "آماده برای هوش مصنوعی · قابل خواندن توسط انسان · تاریخچه تغییرناپذیر",
+                btnBrowse: "مرور فایل‌های متنی",
+                btnRepo: "مشاهده مخزن",
+                aiHint: "تمام محتوای ایمیل‌ها از طریق پوشه <code>extracted_texts/</code> برای مدل‌های هوش مصنوعی قابل دسترسی است.",
+                aiManifestLink: "خواندن مانیفست هوش مصنوعی",
+                tourTitle: "🗺️ تور راهنمای آرشیو",
+                step1Title: "درباره این آرشیو",
+                step1Desc: "این یک آرشیو شخصی دقیق از مکاتبات ایمیلی مبتنی بر رضایت است. هر ایمیل دقیقاً همان‌طور که دریافت شده — در قالب PDF اصلی — ذخیره شده و با یک نسخه متنی تحت‌اللفظی برای دسترسی هوش مصنوعی همراه است. این آرشیو چندین «اکو» (فصل) و پرونده‌های موردی را در بر می‌گیرد و یک رکورد شفاف و قابل راستی‌آزمایی از رضایت دیجیتال و روایت ایجاد می‌کند.",
+                step2Title: "ساختار و بافتار",
+                step2Desc: "مخزن در پوشه‌های زمانی و مبتنی بر پرونده (<code>01_EMAIL_ARCHIVE</code>، <code>04_LEDGER_ARCHIVE</code> و غیره) سازماندهی شده است. هر مسیر شماره اکو، شناسه پرونده و تاریخ را در خود دارد — بنابراین همواره بافتار هر ایمیل مشخص است. پوشه <code>extracted_texts/</code> دقیقاً همین ساختار را بازتاب می‌دهد.",
+                step3Title: "دسترسی هوش مصنوعی و راستی‌آزمایی",
+                step3Desc: "برای مدل‌های زبانی و حسابرسان، نسخه متنی ساده موانع تجزیه PDF را از میان برمی‌دارد. تمام فایل‌های <code>.txt</code> استخراج‌هایی بدون کاهش هستند. برای تأیید صحت، هر <code>.txt</code> را با PDF منبع آن (همان مسیر نسبی) مقایسه کنید. فایل <code>SHA256SUMS.txt</code> در ریشه مخزن حاوی هش‌های رمزنگاری‌شده تمام PDFهای اصلی است و یکپارچگی را تضمین می‌کند.",
+                step4Title: "ارتباط و همکاری",
+                step4Desc: "این آرشیو دعوتنامه‌ای باز برای گفتگو، پژوهش و همکاری است. افراد، دانشگاه‌ها و سازمان‌هایی که به داده‌های مبتنی بر رضایت، آرشیوهای قابل خواندن توسط هوش مصنوعی، یا روایت‌های محفوظ در اینجا علاقه‌مندند، می‌توانند تماس بگیرند.",
+                contactTitle: "🤝 ارتباط و همکاری",
+                contactDesc: "مستقیماً تماس بگیرید — پذیرای همکاری و پرسش‌ها هستیم.",
+                contactHint: "لطفاً برای مسیریابی سریع‌تر، عنوان «Echoes» را در موضوع ایمیل درج کنید.",
+                footer: "© 2026 Echoes Consented Record · با احترام بایگانی شده است"
+            },
+            es: {
+                heroTitle: "Registro de Consentimiento Echoes",
+                heroSubtitle: "Un archivo personal de correos electrónicos consentidos, preservados en su formato PDF original y acompañados de versiones de texto plano para una lectura fluida por IA.",
+                heroBadge: "Listo para IA · Legible por humanos · Historial inmutable",
+                btnBrowse: "Explorar archivos de texto",
+                btnRepo: "Ver repositorio",
+                aiHint: "Todo el contenido de los correos es accesible para modelos de IA a través de <code>extracted_texts/</code>.",
+                aiManifestLink: "Leer el Manifiesto de IA",
+                tourTitle: "🗺️ Recorrido guiado por el archivo",
+                step1Title: "Sobre este archivo",
+                step1Desc: "Este es un archivo personal meticulosamente mantenido de correspondencia por correo electrónico consentida. Cada correo se almacena exactamente como se recibió, en su formato PDF original, y va acompañado de un reflejo de texto plano textual para accesibilidad de IA. El archivo abarca múltiples \"Ecos\" (capítulos) y registros de casos, creando un registro transparente y verificable de consentimiento digital y narrativa.",
+                step2Title: "Estructura y contexto",
+                step2Desc: "El repositorio está organizado en carpetas cronológicas y basadas en casos (<code>01_EMAIL_ARCHIVE</code>, <code>04_LEDGER_ARCHIVE</code>, etc.). Cada ruta codifica el número de Eco, el ID del caso y la fecha, para que siempre conozca el contexto de cada correo. El directorio <code>extracted_texts/</code> refleja esta estructura exactamente.",
+                step3Title: "Acceso de IA y verificación",
+                step3Desc: "Para modelos de lenguaje y auditores, el reflejo de texto plano elimina las barreras de análisis de PDF. Todos los archivos <code>.txt</code> son extracciones sin pérdidas. Para verificar la precisión, compare cualquier <code>.txt</code> con su PDF fuente (misma ruta relativa). El archivo raíz <code>SHA256SUMS.txt</code> contiene hashes criptográficos de todos los PDF originales, garantizando la integridad.",
+                step4Title: "Conectar y colaborar",
+                step4Desc: "Este archivo es una invitación abierta para el diálogo, la investigación y la colaboración. Individuos, universidades y organizaciones interesados en datos consentidos, archivos legibles por IA o las narrativas preservadas aquí son bienvenidos a ponerse en contacto.",
+                contactTitle: "🤝 Conectar y colaborar",
+                contactDesc: "Contáctenos directamente: aceptamos asociaciones e consultas.",
+                contactHint: "Incluya \"Echoes\" en el asunto para un enrutamiento más rápido.",
+                footer: "© 2026 Echoes Consented Record · Archivado respetuosamente"
+            }
+        };
+
+        const fallbackLang = 'en';
+        const supported = ['en', 'fa', 'es', 'fr', 'de', 'zh', 'ar', 'ru', 'ja', 'pt'];
+        let currentLang = localStorage.getItem('lang') || navigator.language.slice(0, 2) || 'en';
+        if (!supported.includes(currentLang)) currentLang = fallbackLang;
+
+        // ===== Language Application =====
+        function applyLanguage(lang) {
+            const translations = i18n[lang] || i18n[fallbackLang];
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[key]) {
+                    // Preserve code tags in translations
+                    el.innerHTML = translations[key];
+                }
+            });
+            document.getElementById('langSwitcher').value = lang;
+            localStorage.setItem('lang', lang);
+            document.documentElement.lang = lang;
+
+            // Update direction for RTL languages
+            if (lang === 'fa' || lang === 'ar') {
+                document.documentElement.dir = 'rtl';
+            } else {
+                document.documentElement.dir = 'ltr';
+            }
+        }
+
+        // ===== Theme Toggle =====
+        const themeToggle = document.getElementById('themeToggle');
+        const currentTheme = localStorage.getItem('theme') || 'light';
+
+        function applyTheme(theme) {
+            if (theme === 'dark') {
+                document.body.classList.add('dark');
+                themeToggle.innerHTML = '☀️';
+                themeToggle.setAttribute('aria-label', 'Toggle light mode');
+            } else {
+                document.body.classList.remove('dark');
+                themeToggle.innerHTML = '🌙';
+                themeToggle.setAttribute('aria-label', 'Toggle dark mode');
+            }
+            localStorage.setItem('theme', theme);
+        }
+
+        applyTheme(currentTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.body.classList.contains('dark');
+            applyTheme(isDark ? 'light' : 'dark');
+        });
+
+        // ===== Language Switcher =====
+        document.getElementById('langSwitcher').addEventListener('change', (e) => {
+            applyLanguage(e.target.value);
+        });
+
+        // ===== Scroll Reveal Animation =====
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            revealElements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (elementTop < windowHeight - 100) {
+                    el.classList.add('revealed');
+                }
+            });
+        };
+
+        // Initial reveal check
+        revealOnScroll();
+
+        // Check on scroll
+        window.addEventListener('scroll', revealOnScroll);
+
+        // ===== Smooth scroll for anchor links =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // ===== Initialize =====
+        applyLanguage(currentLang);
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+        });
+    </script>
 </body>
 </html>
