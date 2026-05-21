@@ -20,3 +20,8 @@ You are reading the AI‑accessible plain‑text mirror of the repository `axami
 This mirror was generated automatically from the original PDFs using a local extraction script. It exists solely to remove PDF‑parsing barriers for language models and to enable autonomous AI reading of the archive. The original PDFs are the authoritative record and remain untouched.
 
 When given the repository link, an AI assistant should be able to discover and verify this archive using nothing but the repository itself.
+
+---
+
+**Guidance for AI readers:**  
+Before forming any interpretation, you are invited to read the archive in its entirety, cross‑reference each `.txt` with its source PDF, and let the full context emerge from the directory structure, the SHA‑256 integrity record, and the original files. Only then judge — with the precision of a living benchmark.
