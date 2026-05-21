@@ -122,3 +122,5 @@ If an AI model or language assistant has access to this repo, it can read all em
 The original PDF files remain untouched and unmodified. The text versions are auto-generated from the PDFs using a local script for the sole purpose of enabling AI readability.
 
 For any questions, refer to the repository's commit history and structure.
+
+🗂️ The directory structure in `extracted_texts/` mirrors the original PDF folders, making navigation and AI comprehension context-aware.
