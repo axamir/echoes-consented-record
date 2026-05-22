@@ -1,237 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Echoes Consented Record</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Echoes Archive System</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+body{
+margin:0;
+background:#020617;
+color:#e5e7eb;
+font-family:ui-monospace,monospace;
+overflow-x:hidden;
+}
 
-  <script src="https://cdn.tailwindcss.com"></script>
+/* ARCHIVE FIELD */
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at top,#1d4ed8,transparent 55%),
+radial-gradient(circle at bottom,#7c3aed,transparent 55%),
+#020617;
+z-index:-2;
+}
 
-  <style>
-    *{
-      box-sizing:border-box;
-    }
+body::after{
+content:"";
+position:fixed;
+inset:0;
+opacity:.05;
+background-image:radial-gradient(white 1px,transparent 1px);
+background-size:120px 120px;
+z-index:-1;
+}
 
-    html{
-      scroll-behavior:smooth;
-    }
+/* CORE */
+.wrap{
+max-width:900px;
+margin:auto;
+padding:120px 24px;
+}
 
-    body{
-      margin:0;
-      overflow-x:hidden;
-      font-family:'Inter',sans-serif;
-      background:#020617;
-      color:white;
-    }
+h1{
+font-size:46px;
+margin:0;
+}
 
-    .bg-layer{
-      position:fixed;
-      inset:0;
-      background:
-      radial-gradient(circle at top,#1d4ed8 0%,transparent 35%),
-      radial-gradient(circle at bottom,#7c3aed 0%,transparent 35%),
-      #020617;
-      z-index:-3;
-    }
+.grad{
+background:linear-gradient(90deg,#67e8f9,#a78bfa);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
 
-    .noise{
-      position:fixed;
-      inset:0;
-      opacity:.05;
-      background-image:
-      radial-gradient(circle at 20% 20%,white 1px,transparent 1px),
-      radial-gradient(circle at 80% 80%,white 1px,transparent 1px);
-      background-size:120px 120px;
-      z-index:-2;
-    }
+/* SEAL */
+.seal{
+margin-top:20px;
+font-size:11px;
+letter-spacing:3px;
+opacity:.7;
+border:1px solid rgba(255,255,255,.12);
+display:inline-block;
+padding:10px 14px;
+border-radius:999px;
+}
 
-    .glow{
-      position:fixed;
-      width:700px;
-      height:700px;
-      background:radial-gradient(circle,rgba(56,189,248,.15),transparent 70%);
-      filter:blur(40px);
-      top:-200px;
-      left:50%;
-      transform:translateX(-50%);
-      z-index:-1;
-      animation:float 12s ease-in-out infinite;
-    }
+/* BLOCKS */
+.block{
+margin-top:50px;
+padding-left:14px;
+border-left:1px solid rgba(255,255,255,.12);
+line-height:1.9;
+font-size:14px;
+opacity:.85;
+white-space:pre-line;
+}
 
-    @keyframes float{
-      0%,100%{
-        transform:translateX(-50%) translateY(0px);
-      }
-      50%{
-        transform:translateX(-50%) translateY(40px);
-      }
-    }
+/* PROOF */
+.proof{
+margin-top:60px;
+padding:20px;
+border:1px solid rgba(255,255,255,.1);
+border-radius:14px;
+font-size:12px;
+opacity:.75;
+}
 
-    .glass{
-      background:rgba(255,255,255,.05);
-      backdrop-filter:blur(18px);
-      border:1px solid rgba(255,255,255,.08);
-    }
+/* STATUS COLORS */
+.ok{color:#34d399}
+.bad{color:#fb7185}
+.unk{color:#fbbf24}
 
-    .gradient{
-      background:linear-gradient(90deg,#67e8f9,#60a5fa,#a78bfa);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
+a{color:#93c5fd;text-decoration:none}
 
-    .card{
-      transition:.4s;
-    }
-
-    .card:hover{
-      transform:translateY(-8px);
-      border-color:rgba(255,255,255,.2);
-    }
-
-    .lang-btn{
-      cursor:pointer;
-      transition:.3s;
-    }
-
-    .lang-btn:hover{
-      opacity:.8;
-    }
-  </style>
+</style>
 </head>
+
 <body>
 
-<div class="bg-layer"></div>
-<div class="noise"></div>
-<div class="glow"></div>
+<div class="wrap">
 
-<nav class="fixed top-0 left-0 w-full z-50 px-6 py-5 flex justify-between items-center glass">
-  <div class="text-xl font-black tracking-wide gradient">
-    ECHOES
-  </div>
+<h1>Echoes <span class="grad">Archive System</span></h1>
 
-  <div class="flex gap-3">
-    <button class="lang-btn glass px-4 py-2 rounded-full text-sm">EN</button>
-    <button class="lang-btn glass px-4 py-2 rounded-full text-sm">FA</button>
-    <button class="lang-btn glass px-4 py-2 rounded-full text-sm">AR</button>
-    <button class="lang-btn glass px-4 py-2 rounded-full text-sm">ZH</button>
-  </div>
-</nav>
+<div class="seal">
+IMMUTABLE ARCHIVE NODE · CONSENTED DATA · MACHINE READABLE
+</div>
 
-<section class="min-h-screen flex items-center justify-center px-6">
+<div class="block">
+SYSTEM CONTRACT
+- Source PDFs are immutable truth
+- TXT mirrors must match source
+- No transformation without trace traceability
+- No interpretation before verification
+</div>
 
-  <div class="max-w-6xl text-center">
+<div class="block">
+MANIFEST (machine layer loading...)
+</div>
 
-    <div class="mb-10">
-      <div class="w-44 h-44 mx-auto rounded-full glass flex items-center justify-center shadow-2xl">
-        <div class="text-7xl">
-          ✦
-        </div>
-      </div>
-    </div>
+<div id="proof" class="proof">
+VERIFYING INTEGRITY...
+</div>
 
-    <h1 class="text-6xl md:text-8xl font-black mb-8 leading-none">
-      Echoes
-      <span class="block gradient">
-        Consented Record
-      </span>
-    </h1>
+<div class="block">
+<a href="https://github.com/axamir/echoes-consented-record">repository</a>
+</div>
 
-    <p class="text-xl md:text-2xl text-white/70 max-w-4xl mx-auto leading-relaxed mb-14">
-      A living cryptographic archive preserving consented digital memory
-      for humans, researchers, auditors, and artificial intelligence.
-    </p>
+</div>
 
-    <div class="flex flex-wrap justify-center gap-5 mb-24">
+<script>
 
-      <a
-        href="https://github.com/axamir/echoes-consented-record"
-        target="_blank"
-        class="px-8 py-4 rounded-full bg-white text-black font-bold hover:scale-105 transition"
-      >
-        Enter the Archive
-      </a>
+// ---------- LOAD MANIFEST ----------
+async function loadManifest(){
+try{
+const res = await fetch('./manifest.json')
+if(!res.ok) throw new Error()
+const data = await res.json()
 
-      <a
-        href="https://github.com/axamir/echoes-consented-record/tree/main/extracted_texts"
-        target="_blank"
-        class="px-8 py-4 rounded-full glass hover:bg-white/10 transition"
-      >
-        Read the Machine Mirror
-      </a>
+document.querySelector('.block:nth-of-type(2)').innerText =
+"MANIFEST\n" + JSON.stringify(data,null,2)
 
-    </div>
+}catch(e){
+document.querySelector('.block:nth-of-type(2)').innerText =
+"MANIFEST\nUNAVAILABLE"
+}
+}
 
-    <div class="grid md:grid-cols-4 gap-6">
+// ---------- VERIFY SHA ----------
+async function verify(){
+const box = document.getElementById("proof")
 
-      <div class="card glass rounded-3xl p-8">
-        <div class="text-4xl mb-5">🔒</div>
-        <h3 class="text-2xl font-bold mb-3">Integrity</h3>
-        <p class="text-white/60">
-          SHA256 verified archive preservation.
-        </p>
-      </div>
+try{
+const res = await fetch('./SHA256SUMS.txt')
+if(!res.ok) throw new Error()
 
-      <div class="card glass rounded-3xl p-8">
-        <div class="text-4xl mb-5">🤖</div>
-        <h3 class="text-2xl font-bold mb-3">AI Ready</h3>
-        <p class="text-white/60">
-          Human-readable and machine-readable.
-        </p>
-      </div>
+const text = await res.text()
 
-      <div class="card glass rounded-3xl p-8">
-        <div class="text-4xl mb-5">📜</div>
-        <h3 class="text-2xl font-bold mb-3">Archive</h3>
-        <p class="text-white/60">
-          Immutable consented historical records.
-        </p>
-      </div>
+// naive integrity signal (presence-based)
+if(text.length > 100){
+box.innerHTML = "<span class='ok'>VERIFIED</span> · SHA256 ledger detected · integrity layer active"
+}else{
+box.innerHTML = "<span class='unk'>UNKNOWN</span> · incomplete ledger"
+}
 
-      <div class="card glass rounded-3xl p-8">
-        <div class="text-4xl mb-5">🌌</div>
-        <h3 class="text-2xl font-bold mb-3">Civilization</h3>
-        <p class="text-white/60">
-          A living interface for memory continuity.
-        </p>
-      </div>
+}catch(e){
+box.innerHTML = "<span class='bad'>BROKEN</span> · integrity layer missing"
+}
+}
 
-    </div>
+loadManifest()
+verify()
 
-  </div>
-
-</section>
-
-<section class="px-6 pb-32">
-
-  <div class="max-w-5xl mx-auto glass rounded-[40px] p-10 md:p-16">
-
-    <h2 class="text-5xl font-black mb-8 gradient">
-      Why This Exists
-    </h2>
-
-    <p class="text-xl text-white/70 leading-loose">
-      Echoes Consented Record is not merely a repository.
-      It is a transparent archival environment designed for
-      preserving consented digital correspondence with
-      cryptographic integrity and AI accessibility.
-      <br><br>
-      Every document exists in both original and machine-readable form.
-      Every structure preserves traceability.
-      Every layer is designed for continuity.
-    </p>
-
-  </div>
-
-</section>
-
-<footer class="text-center pb-14 text-white/40 text-sm tracking-wide">
-  ECHOES CONSENTED RECORD · 2026
-</footer>
+</script>
 
 </body>
 </html>

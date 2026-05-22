@@ -1,0 +1,17 @@
+{
+  "system": "Echoes Archive System",
+  "version": "1.0.0",
+  "mode": "immutable-read-only",
+  "layers": {
+    "source": "PDF",
+    "mirror": "TXT",
+    "integrity": "SHA256SUMS.txt"
+  },
+  "rules": [
+    "No modification of source PDFs",
+    "No interpretation before verification",
+    "All records are consented",
+    "All mirrors must match source"
+  ],
+  "echo": "ECR-01"
+}
