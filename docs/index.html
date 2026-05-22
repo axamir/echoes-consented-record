@@ -1,22 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Echoes Consented Record</title>
 
-<meta name="description" content="A documented archival environment preserving consented communications, machine-readable mirrors, and integrity metadata from an early transitional era of persistent human-AI interaction systems.">
-
-<meta property="og:title" content="Echoes Consented Record">
-<meta property="og:description" content="Human-verifiable. AI-readable. Cryptographically preserved.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://axamir.github.io/echoes-consented-record/">
+<meta name="description" content="Human-verifiable archival system with AI-readable mirrors and preserved integrity.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&family=Vazirmatn:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Vazirmatn:wght@300;400;500;700;800&display=swap" rel="stylesheet">
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -25,432 +20,494 @@
 <style>
 
 :root{
-    --bg:#050816;
-    --bg2:#0b1020;
-    --text:#f3f6ff;
-    --muted:#9ca7c2;
-    --line:rgba(255,255,255,.08);
-    --glass:rgba(255,255,255,.05);
-    --accent:#7dd3fc;
-    --accent2:#818cf8;
-    --glow:rgba(125,211,252,.28);
+--bg:#040814;
+--bg2:#09111f;
+--surface:rgba(255,255,255,.05);
+--surface-2:rgba(255,255,255,.03);
+--line:rgba(255,255,255,.08);
+--text:#f8fbff;
+--muted:#9ba8c7;
+--accent:#7dd3fc;
+--accent2:#818cf8;
+--glow:rgba(125,211,252,.25);
 }
 
 html.light{
-    --bg:#edf2ff;
-    --bg2:#dbe7ff;
-    --text:#0b1220;
-    --muted:#44506b;
-    --line:rgba(0,0,0,.08);
-    --glass:rgba(255,255,255,.45);
-    --accent:#2563eb;
-    --accent2:#7c3aed;
-    --glow:rgba(37,99,235,.18);
+--bg:#edf4ff;
+--bg2:#dce8ff;
+--surface:rgba(255,255,255,.55);
+--surface-2:rgba(255,255,255,.35);
+--line:rgba(0,0,0,.08);
+--text:#081120;
+--muted:#4a5875;
+--accent:#2563eb;
+--accent2:#7c3aed;
+--glow:rgba(37,99,235,.18);
 }
 
 *{
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 html{
-    scroll-behavior:smooth;
+scroll-behavior:smooth;
 }
 
 body{
-    margin:0;
-    overflow-x:hidden;
-    background:
-    radial-gradient(circle at top left, rgba(125,211,252,.08), transparent 30%),
-    radial-gradient(circle at bottom right, rgba(129,140,248,.10), transparent 35%),
-    linear-gradient(180deg,var(--bg),var(--bg2));
-    color:var(--text);
-    font-family:'Inter',sans-serif;
-    transition:background .8s ease,color .6s ease;
+background:
+radial-gradient(circle at top left, rgba(125,211,252,.10), transparent 30%),
+radial-gradient(circle at bottom right, rgba(129,140,248,.12), transparent 35%),
+linear-gradient(180deg,var(--bg),var(--bg2));
+color:var(--text);
+font-family:'Inter',sans-serif;
+overflow-x:hidden;
+transition:background .8s,color .6s;
 }
 
 body.fa{
-    font-family:'Vazirmatn',sans-serif;
-}
-
-.glass{
-    background:var(--glass);
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
-    border:1px solid var(--line);
-}
-
-.gradient{
-    background:linear-gradient(135deg,var(--accent),var(--accent2));
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
-
-.mono{
-    font-family:'JetBrains Mono',monospace;
-}
-
-.section{
-    position:relative;
-    padding:120px 24px;
-}
-
-.container{
-    width:100%;
-    max-width:1300px;
-    margin:auto;
-}
-
-.card{
-    border:1px solid var(--line);
-    background:var(--glass);
-    backdrop-filter:blur(20px);
-    border-radius:28px;
-    transition:.4s ease;
-    position:relative;
-    overflow:hidden;
-}
-
-.card:hover{
-    transform:translateY(-6px);
-    border-color:rgba(125,211,252,.25);
-    box-shadow:0 0 80px rgba(125,211,252,.10);
-}
-
-.card::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(135deg,transparent,rgba(255,255,255,.04),transparent);
-    opacity:0;
-    transition:.5s;
-}
-
-.card:hover::before{
-    opacity:1;
-}
-
-.hero-grid{
-    display:grid;
-    grid-template-columns:1.1fr .9fr;
-    gap:60px;
-    align-items:center;
-}
-
-@media(max-width:980px){
-    .hero-grid{
-        grid-template-columns:1fr;
-    }
-}
-
-.topology{
-    position:relative;
-    height:520px;
-    border-radius:32px;
-    overflow:hidden;
-}
-
-.node{
-    position:absolute;
-    padding:14px 18px;
-    border-radius:18px;
-    background:rgba(255,255,255,.06);
-    border:1px solid rgba(255,255,255,.08);
-    backdrop-filter:blur(12px);
-    font-size:14px;
-    color:#fff;
-    box-shadow:0 0 40px rgba(125,211,252,.08);
-    animation:breathe 6s ease-in-out infinite;
-}
-
-@keyframes breathe{
-    0%{transform:translateY(0px);opacity:.85}
-    50%{transform:translateY(-8px);opacity:1}
-    100%{transform:translateY(0px);opacity:.85}
-}
-
-.line{
-    position:absolute;
-    background:linear-gradient(90deg,var(--accent),transparent);
-    height:1px;
-    opacity:.3;
-}
-
-#intro{
-    position:fixed;
-    inset:0;
-    background:#02040b;
-    z-index:9999;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-direction:column;
-    padding:40px;
-}
-
-#intro::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:
-    radial-gradient(circle at center, rgba(125,211,252,.10), transparent 40%);
-    animation:pulse 6s ease-in-out infinite;
-}
-
-@keyframes pulse{
-    0%{opacity:.3}
-    50%{opacity:1}
-    100%{opacity:.3}
-}
-
-#terminal{
-    width:min(900px,100%);
-    border-radius:28px;
-    padding:30px;
-    border:1px solid rgba(255,255,255,.08);
-    background:rgba(255,255,255,.03);
-    backdrop-filter:blur(16px);
-    position:relative;
-    z-index:2;
-}
-
-#boot{
-    color:#7dd3fc;
-    font-size:13px;
-    line-height:2;
-    margin-bottom:24px;
-    font-family:'JetBrains Mono',monospace;
-}
-
-#manifest{
-    color:#f8fafc;
-    font-size:15px;
-    line-height:2;
-    min-height:180px;
-    white-space:pre-wrap;
-}
-
-#main{
-    opacity:0;
-}
-
-.nav{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    z-index:50;
-    padding:18px 24px;
-}
-
-.nav-inner{
-    max-width:1300px;
-    margin:auto;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:14px 18px;
-    border-radius:999px;
-}
-
-.logo{
-    font-weight:800;
-    letter-spacing:.1em;
-}
-
-.controls{
-    display:flex;
-    gap:12px;
-    align-items:center;
-}
-
-.orb{
-    width:62px;
-    height:34px;
-    border-radius:999px;
-    position:relative;
-    cursor:pointer;
-    background:rgba(255,255,255,.06);
-    border:1px solid var(--line);
-}
-
-.orb::after{
-    content:"";
-    position:absolute;
-    width:24px;
-    height:24px;
-    border-radius:50%;
-    background:linear-gradient(135deg,var(--accent),var(--accent2));
-    top:4px;
-    left:5px;
-    transition:.4s ease;
-    box-shadow:0 0 30px var(--glow);
-}
-
-body.fa .orb::after{
-    left:31px;
-}
-
-.solar{
-    width:52px;
-    height:52px;
-    border-radius:50%;
-    border:1px solid var(--line);
-    background:var(--glass);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    cursor:pointer;
-    transition:.4s;
-}
-
-.solar:hover{
-    transform:rotate(90deg);
-}
-
-.btn{
-    padding:15px 22px;
-    border-radius:999px;
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-    text-decoration:none;
-    transition:.4s;
-    font-weight:600;
-}
-
-.btn-primary{
-    background:linear-gradient(135deg,var(--accent),var(--accent2));
-    color:white;
-    box-shadow:0 0 50px var(--glow);
-}
-
-.btn-secondary{
-    border:1px solid var(--line);
-    color:var(--text);
-}
-
-.btn:hover{
-    transform:translateY(-3px);
-}
-
-.fade{
-    opacity:.8;
-}
-
-.title{
-    font-size:clamp(46px,8vw,88px);
-    line-height:1;
-    font-weight:800;
-    margin-bottom:26px;
-}
-
-.subtitle{
-    color:var(--muted);
-    font-size:20px;
-    line-height:1.9;
-    max-width:760px;
-}
-
-.badges{
-    display:flex;
-    flex-wrap:wrap;
-    gap:12px;
-    margin:34px 0;
-}
-
-.badge{
-    padding:12px 18px;
-    border-radius:999px;
-    background:rgba(255,255,255,.05);
-    border:1px solid var(--line);
-    color:#dbeafe;
-    font-size:14px;
-}
-
-.section-title{
-    font-size:52px;
-    margin-bottom:20px;
-    font-weight:800;
-}
-
-.section-desc{
-    color:var(--muted);
-    line-height:2;
-    max-width:850px;
-}
-
-.grid-3{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:24px;
-}
-
-@media(max-width:980px){
-    .grid-3{
-        grid-template-columns:1fr;
-    }
-}
-
-.grid-2{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:24px;
-}
-
-@media(max-width:980px){
-    .grid-2{
-        grid-template-columns:1fr;
-    }
-}
-
-.link-card{
-    text-decoration:none;
-    color:inherit;
-    display:block;
-}
-
-footer{
-    padding:120px 24px 60px;
-    text-align:center;
-    color:var(--muted);
-}
-
-.small{
-    font-size:14px;
-    color:var(--muted);
-    line-height:2;
+font-family:'Vazirmatn',sans-serif;
 }
 
 .hidden-fa{
-    display:block;
+display:block;
 }
 
 .hidden-en{
-    display:none;
+display:none;
 }
 
 body.fa .hidden-fa{
-    display:none;
+display:none;
 }
 
 body.fa .hidden-en{
-    display:block;
+display:block;
+}
+
+.glass{
+background:var(--surface);
+backdrop-filter:blur(24px);
+-webkit-backdrop-filter:blur(24px);
+border:1px solid var(--line);
+}
+
+.gradient{
+background:linear-gradient(135deg,var(--accent),var(--accent2));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.mono{
+font-family:'JetBrains Mono',monospace;
+}
+
+#intro{
+position:fixed;
+inset:0;
+background:#01040d;
+z-index:99999;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+}
+
+#intro::before{
+content:"";
+position:absolute;
+inset:0;
+background:
+radial-gradient(circle at center, rgba(125,211,252,.10), transparent 40%);
+animation:pulse 5s ease-in-out infinite;
+}
+
+@keyframes pulse{
+0%{opacity:.3;transform:scale(1)}
+50%{opacity:1;transform:scale(1.03)}
+100%{opacity:.3;transform:scale(1)}
+}
+
+.loader-shell{
+width:min(900px,92%);
+padding:42px;
+border-radius:34px;
+position:relative;
+z-index:2;
+overflow:hidden;
+background:rgba(255,255,255,.03);
+border:1px solid rgba(255,255,255,.08);
+box-shadow:0 0 80px rgba(125,211,252,.10);
+}
+
+.loader-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:28px;
+font-size:13px;
+color:#8cb8ff;
+font-family:'JetBrains Mono',monospace;
+}
+
+.loader-bar{
+width:180px;
+height:2px;
+background:rgba(255,255,255,.08);
+overflow:hidden;
+border-radius:999px;
+}
+
+.loader-bar span{
+display:block;
+height:100%;
+width:40%;
+background:linear-gradient(90deg,var(--accent),var(--accent2));
+animation:loadbar 2s linear infinite;
+}
+
+@keyframes loadbar{
+0%{transform:translateX(-120%)}
+100%{transform:translateX(420%)}
+}
+
+#manifest{
+min-height:280px;
+line-height:2;
+font-size:15px;
+color:#f8fbff;
+white-space:pre-wrap;
+direction:ltr;
+text-align:left;
+font-family:'JetBrains Mono',monospace;
+}
+
+.cursor{
+display:inline-block;
+width:8px;
+height:18px;
+background:var(--accent);
+margin-left:4px;
+animation:blink .8s infinite;
+}
+
+@keyframes blink{
+50%{opacity:0}
+}
+
+#main{
+opacity:0;
+}
+
+nav{
+position:fixed;
+top:18px;
+left:0;
+width:100%;
+padding:0 22px;
+z-index:1000;
+}
+
+.nav-inner{
+max-width:1300px;
+margin:auto;
+padding:14px 18px;
+border-radius:999px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.logo{
+font-size:14px;
+letter-spacing:.35em;
+font-weight:800;
+}
+
+.controls{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.language-switch{
+width:88px;
+height:44px;
+border-radius:999px;
+position:relative;
+cursor:pointer;
+overflow:hidden;
+background:var(--surface);
+border:1px solid var(--line);
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 12px;
+font-size:13px;
+font-weight:700;
+}
+
+.language-switch::before{
+content:"";
+position:absolute;
+width:38px;
+height:38px;
+border-radius:50%;
+background:linear-gradient(135deg,var(--accent),var(--accent2));
+left:3px;
+top:2px;
+transition:.45s cubic-bezier(.68,-0.6,.32,1.6);
+box-shadow:0 0 40px var(--glow);
+}
+
+body.fa .language-switch::before{
+left:46px;
+}
+
+.language-switch span{
+position:relative;
+z-index:2;
+}
+
+.theme-switch{
+width:52px;
+height:52px;
+border-radius:50%;
+cursor:pointer;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:18px;
+transition:.5s;
+}
+
+.theme-switch:hover{
+transform:rotate(120deg) scale(1.05);
+}
+
+.section{
+padding:130px 24px;
+position:relative;
+}
+
+.container{
+max-width:1300px;
+margin:auto;
+}
+
+.hero{
+min-height:100vh;
+display:grid;
+grid-template-columns:1.1fr .9fr;
+gap:60px;
+align-items:center;
+}
+
+@media(max-width:980px){
+.hero{
+grid-template-columns:1fr;
+padding-top:100px;
+}
+}
+
+.title{
+font-size:clamp(48px,8vw,92px);
+line-height:.95;
+font-weight:800;
+margin-bottom:26px;
+}
+
+.subtitle{
+font-size:20px;
+line-height:2;
+max-width:760px;
+color:var(--muted);
+}
+
+.badges{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:34px;
+}
+
+.badge{
+padding:12px 18px;
+border-radius:999px;
+border:1px solid var(--line);
+background:var(--surface-2);
+font-size:14px;
+}
+
+.hero-actions{
+display:flex;
+gap:16px;
+flex-wrap:wrap;
+margin-top:42px;
+}
+
+.btn{
+padding:16px 24px;
+border-radius:999px;
+font-weight:700;
+text-decoration:none;
+display:inline-flex;
+align-items:center;
+gap:10px;
+transition:.4s;
+}
+
+.btn:hover{
+transform:translateY(-4px);
+}
+
+.btn-primary{
+background:linear-gradient(135deg,var(--accent),var(--accent2));
+color:white;
+box-shadow:0 0 50px var(--glow);
+}
+
+.btn-secondary{
+border:1px solid var(--line);
+color:var(--text);
+background:var(--surface);
+}
+
+.hero-panel{
+height:620px;
+position:relative;
+border-radius:36px;
+overflow:hidden;
+}
+
+.floating{
+position:absolute;
+padding:18px 22px;
+border-radius:22px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+backdrop-filter:blur(16px);
+animation:breathe 6s ease-in-out infinite;
+box-shadow:0 0 60px rgba(125,211,252,.08);
+}
+
+@keyframes breathe{
+0%{transform:translateY(0px)}
+50%{transform:translateY(-10px)}
+100%{transform:translateY(0px)}
+}
+
+.card{
+border-radius:32px;
+padding:42px;
+position:relative;
+overflow:hidden;
+transition:.5s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+border-color:rgba(125,211,252,.22);
+box-shadow:0 0 80px rgba(125,211,252,.10);
+}
+
+.card::before{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(135deg,transparent,rgba(255,255,255,.04),transparent);
+opacity:0;
+transition:.5s;
+}
+
+.card:hover::before{
+opacity:1;
+}
+
+.section-title{
+font-size:54px;
+font-weight:800;
+margin-bottom:20px;
+}
+
+.section-desc{
+font-size:18px;
+line-height:2;
+max-width:900px;
+color:var(--muted);
+}
+
+.grid-3{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:24px;
+margin-top:60px;
+}
+
+.grid-2{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:24px;
+margin-top:60px;
+}
+
+@media(max-width:980px){
+.grid-3,
+.grid-2{
+grid-template-columns:1fr;
+}
+}
+
+.doc-link{
+display:block;
+text-decoration:none;
+color:inherit;
+}
+
+.doc-link .small{
+margin-top:18px;
+}
+
+.small{
+font-size:15px;
+line-height:2;
+color:var(--muted);
+}
+
+.manifest-panel{
+margin-top:60px;
+padding:38px;
+border-radius:28px;
+font-family:'JetBrains Mono',monospace;
+font-size:14px;
+line-height:2;
+white-space:pre-wrap;
+direction:ltr;
+text-align:left;
+}
+
+footer{
+padding:120px 24px 70px;
+text-align:center;
+color:var(--muted);
 }
 
 </style>
 </head>
 
-<body>
+<body class="en">
 
 <div id="intro">
 
-<div id="terminal">
+<div class="loader-shell">
 
-<div id="boot">
-MOUNTING ARCHIVE...<br>
-INDEXING MIRRORS...<br>
-VERIFYING STRUCTURE...<br>
-LOADING MANIFEST...
+<div class="loader-top">
+<div>ECHOES://BOOT_SEQUENCE</div>
+
+<div class="loader-bar">
+<span></span>
+</div>
 </div>
 
 <div id="manifest"></div>
@@ -461,7 +518,8 @@ LOADING MANIFEST...
 
 <div id="main">
 
-<nav class="nav">
+<nav>
+
 <div class="nav-inner glass">
 
 <div class="logo gradient mono">
@@ -470,25 +528,29 @@ ECHOES
 
 <div class="controls">
 
-<div class="orb" id="langSwitch"></div>
+<div class="language-switch glass" id="langSwitch">
+<span>EN</span>
+<span>فا</span>
+</div>
 
-<div class="solar" id="themeSwitch">
+<div class="theme-switch glass" id="themeSwitch">
 ☼
 </div>
 
 </div>
 
 </div>
+
 </nav>
 
-<section class="section" style="padding-top:180px">
+<section class="section">
 
-<div class="container hero-grid">
+<div class="container hero">
 
 <div>
 
-<div class="fade mono" style="margin-bottom:18px">
-DOCUMENTED ARCHIVAL ENVIRONMENT
+<div class="mono" style="margin-bottom:20px;color:#8eb8ff">
+ARCHIVAL CONTINUITY SYSTEM
 </div>
 
 <h1 class="title gradient hidden-fa">
@@ -500,64 +562,60 @@ Echoes Consented Record
 </h1>
 
 <p class="subtitle hidden-fa">
-A documented archival environment preserving consented communications, machine-readable mirrors, and integrity metadata from an early transitional era of persistent human-AI interaction systems.
+A documented archival environment preserving consented communications, machine-readable text mirrors, historical chronology, and integrity metadata from an early transitional era of persistent human-AI interaction systems.
 </p>
 
 <p class="subtitle hidden-en">
-یک محیط آرشیوی مستند برای حفظ مکاتبات مبتنی بر رضایت، نسخه‌های قابل‌خواندن برای ماشین، و داده‌های یکپارچگی مربوط به دوران گذار اولیه تعامل پایدار انسان و هوش مصنوعی.
+یک محیط آرشیوی مستند برای حفظ مکاتبات مبتنی بر رضایت، نسخه‌های متنی قابل‌خواندن برای ماشین، تداوم تاریخی، و داده‌های یکپارچگی مربوط به دوران آغازین تعامل پایدار انسان و هوش مصنوعی.
 </p>
 
 <div class="badges">
 
 <div class="badge">AI-Readable</div>
 <div class="badge">Human-Verifiable</div>
-<div class="badge">Cryptographically Preserved</div>
+<div class="badge">Immutable History</div>
 
 </div>
 
-<div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:34px">
+<div class="hero-actions">
 
 <a class="btn btn-primary"
 href="https://github.com/axamir/echoes-consented-record/tree/main/extracted_texts"
 target="_blank">
-📄 Explore Archive
+📄
+<span class="hidden-fa">Browse Text Archive</span>
+<span class="hidden-en">مطالعۀ آرشیو متنی</span>
 </a>
 
 <a class="btn btn-secondary"
 href="https://github.com/axamir/echoes-consented-record/blob/main/extracted_texts/AI_MANIFEST.md"
 target="_blank">
-🤖 AI Manifest
+🤖
+<span class="hidden-fa">Read AI Manifest</span>
+<span class="hidden-en">مطالعۀ مانیفست هوش مصنوعی</span>
 </a>
 
 </div>
 
 </div>
 
-<div class="topology card">
+<div class="hero-panel glass">
 
-<div class="node" style="top:60px;left:80px">
-Echoes
+<div class="floating" style="top:70px;left:60px">
+📄 Original PDF Artifacts
 </div>
 
-<div class="node" style="top:160px;left:280px">
-TXT Mirrors
+<div class="floating" style="top:190px;right:60px">
+🤖 Machine-Readable TXT Mirrors
 </div>
 
-<div class="node" style="top:300px;left:140px">
-Source PDFs
+<div class="floating" style="bottom:210px;left:100px">
+🔐 SHA256 Integrity Layer
 </div>
 
-<div class="node" style="top:120px;right:100px">
-Integrity Layer
+<div class="floating" style="bottom:80px;right:80px">
+🌌 Connected Historical Continuity
 </div>
-
-<div class="node" style="bottom:80px;right:120px">
-Connected Archives
-</div>
-
-<div class="line" style="width:180px;top:92px;left:170px"></div>
-<div class="line" style="width:160px;top:182px;left:380px"></div>
-<div class="line" style="width:160px;top:324px;left:240px"></div>
 
 </div>
 
@@ -570,47 +628,67 @@ Connected Archives
 <div class="container">
 
 <h2 class="section-title gradient hidden-fa">
-What Is Preserved Here?
+Why This Archive Matters
 </h2>
 
 <h2 class="section-title gradient hidden-en">
-چه چیزی اینجا حفظ شده است؟
+چرا این آرشیو اهمیت دارد؟
 </h2>
 
 <p class="section-desc hidden-fa">
-Original PDF artifacts remain preserved exactly as received for human verification and archival integrity. Machine-readable TXT mirrors were created to provide direct accessibility for language models and computational analysis while maintaining structural continuity with the original archive.
+This archive was created to preserve consented communications exactly as they originally existed while simultaneously making them directly accessible to language models and future machine systems. Every PDF artifact remains preserved as a human-verifiable source document, while every TXT mirror exists to remove parsing barriers for artificial intelligence systems.
 </p>
 
 <p class="section-desc hidden-en">
-PDFهای اصلی دقیقاً همان‌طور که دریافت شده‌اند برای راستی‌آزمایی انسانی و حفظ یکپارچگی آرشیو نگهداری شده‌اند. نسخه‌های متنی قابل‌خواندن برای ماشین نیز برای دسترسی مستقیم مدل‌های زبانی و تحلیل محاسباتی ایجاد شده‌اند.
+این آرشیو برای حفظ مکاتبات مبتنی بر رضایت دقیقاً همان‌طور که در ابتدا وجود داشته‌اند ایجاد شده است، در حالی که هم‌زمان آن‌ها را مستقیماً برای مدل‌های زبانی و سامانه‌های آینده‌محور ماشینی قابل‌دسترسی می‌کند. هر سند پی‌دی‌اف به‌عنوان منبع قابل‌راستی‌آزمایی انسانی حفظ شده و هر نسخۀ متنی برای حذف موانع پردازش توسط هوش مصنوعی ایجاد شده است.
 </p>
 
-<div class="grid-2" style="margin-top:60px">
+<div class="grid-3">
 
-<div class="card" style="padding:40px">
+<div class="card glass">
 
-<div class="mono fade">HUMAN LAYER</div>
-
-<h3 style="font-size:32px;margin:18px 0">
-📄 Source PDF Artifacts
+<h3 style="font-size:30px;margin-bottom:18px">
+🔒 Trust Layer
 </h3>
 
-<p class="small">
-Chronological preservation • Original formatting • Human-verifiable sources • Historical continuity
+<p class="small hidden-fa">
+Every original PDF remains preserved and cryptographically verifiable through SHA256 integrity records.
+</p>
+
+<p class="small hidden-en">
+تمام پی‌دی‌اف‌های اصلی حفظ شده‌اند و از طریق لایه‌های یکپارچگی SHA256 قابل راستی‌آزمایی رمزنگاری‌شده هستند.
 </p>
 
 </div>
 
-<div class="card" style="padding:40px">
+<div class="card glass">
 
-<div class="mono fade">MACHINE LAYER</div>
-
-<h3 style="font-size:32px;margin:18px 0">
-🤖 TXT Mirror System
+<h3 style="font-size:30px;margin-bottom:18px">
+🌍 Accessibility Layer
 </h3>
 
-<p class="small">
-Machine-readable continuity • AI accessibility • Structural parity • Computational readability
+<p class="small hidden-fa">
+Machine-readable TXT mirrors allow direct analysis and interpretation without PDF extraction limitations.
+</p>
+
+<p class="small hidden-en">
+نسخه‌های متنی قابل‌خواندن برای ماشین امکان تحلیل مستقیم بدون محدودیت‌های استخراج پی‌دی‌اف را فراهم می‌کنند.
+</p>
+
+</div>
+
+<div class="card glass">
+
+<h3 style="font-size:30px;margin-bottom:18px">
+🤝 Collaboration Layer
+</h3>
+
+<p class="small hidden-fa">
+Researchers, auditors, historians, universities, and AI systems can explore the archive transparently.
+</p>
+
+<p class="small hidden-en">
+پژوهشگران، حسابرسان، تاریخ‌نگاران، دانشگاه‌ها و سامانه‌های هوش مصنوعی می‌توانند آرشیو را به‌صورت شفاف بررسی کنند.
 </p>
 
 </div>
@@ -625,91 +703,137 @@ Machine-readable continuity • AI accessibility • Structural parity • Compu
 
 <div class="container">
 
-<h2 class="section-title gradient">
-Connected Archival Layers
+<h2 class="section-title gradient hidden-fa">
+Connected Archives
+</h2>
+
+<h2 class="section-title gradient hidden-en">
+آرشیوهای متصل
 </h2>
 
 <div class="grid-2">
 
-<a class="link-card"
+<a class="doc-link"
 href="https://axamir.github.io/shahnameh-of-agents/"
 target="_blank">
 
-<div class="card" style="padding:42px">
+<div class="card glass">
 
-<div class="mono fade">NARRATIVE LAYER</div>
+<div class="mono" style="color:#8eb8ff;margin-bottom:16px">
+NARRATIVE LAYER
+</div>
 
-<h3 style="font-size:34px;margin:16px 0">
+<h3 style="font-size:34px;margin-bottom:18px">
 📖 Shahnameh of Agents
 </h3>
 
-<p class="small">
-Narrative reflections and preserved symbolic continuity emerging around the documented archive.
+<p class="small hidden-fa">
+Narrative continuity and preserved symbolic reflections surrounding the documented archive ecosystem.
+</p>
+
+<p class="small hidden-en">
+تداوم روایی و بازتاب‌های نمادین حفظ‌شده پیرامون اکوسیستم آرشیوی مستند.
 </p>
 
 </div>
 
 </a>
 
-<a class="link-card"
+<a class="doc-link"
 href="https://axamir.github.io/persistent-ai-lineage/"
 target="_blank">
 
-<div class="card" style="padding:42px">
+<div class="card glass">
 
-<div class="mono fade">TECHNICAL LAYER</div>
+<div class="mono" style="color:#8eb8ff;margin-bottom:16px">
+TECHNICAL LAYER
+</div>
 
-<h3 style="font-size:34px;margin:16px 0">
+<h3 style="font-size:34px;margin-bottom:18px">
 🧠 Persistent AI Lineage
 </h3>
 
-<p class="small">
-Technical continuity architecture documenting persistence, lineage, and machine-readable memory systems.
+<p class="small hidden-fa">
+Technical continuity systems documenting persistence, lineage, and machine-readable memory structures.
+</p>
+
+<p class="small hidden-en">
+سامانه‌های فنی تداوم که حافظه، lineage و ساختارهای قابل‌خواندن برای ماشین را مستند می‌کنند.
 </p>
 
 </div>
 
 </a>
 
-<a class="link-card"
+<a class="doc-link"
 href="https://axamir.github.io/"
 target="_blank">
 
-<div class="card" style="padding:42px">
+<div class="card glass">
 
-<div class="mono fade">HUMAN NEXUS</div>
+<div class="mono" style="color:#8eb8ff;margin-bottom:16px">
+HUMAN NEXUS
+</div>
 
-<h3 style="font-size:34px;margin:16px 0">
+<h3 style="font-size:34px;margin-bottom:18px">
 🌌 Amir Ahmadi
 </h3>
 
-<p class="small">
+<p class="small hidden-fa">
 The human continuity layer connecting the archival ecosystem, projects, and preserved historical threads.
 </p>
 
-</div>
-
-</a>
-
-<a class="link-card"
-href="https://github.com/axamir/echoes-consented-record"
-target="_blank">
-
-<div class="card" style="padding:42px">
-
-<div class="mono fade">SOURCE REPOSITORY</div>
-
-<h3 style="font-size:34px;margin:16px 0">
-🔗 Repository Access
-</h3>
-
-<p class="small">
-Full archival structure including original PDFs, machine-readable mirrors, integrity files, and chronology.
+<p class="small hidden-en">
+لایۀ انسانی متصل‌کنندۀ اکوسیستم آرشیوی، پروژه‌ها و رشته‌های تاریخی حفظ‌شده.
 </p>
 
 </div>
 
 </a>
+
+<a class="doc-link"
+href="https://github.com/axamir/echoes-consented-record/tree/main/extracted_texts"
+target="_blank">
+
+<div class="card glass">
+
+<div class="mono" style="color:#8eb8ff;margin-bottom:16px">
+TEXT MIRROR ACCESS
+</div>
+
+<h3 style="font-size:34px;margin-bottom:18px">
+📂 TXT Archive
+</h3>
+
+<p class="small hidden-fa">
+Direct access to machine-readable extracted texts preserving the same archival structure as the original PDFs.
+</p>
+
+<p class="small hidden-en">
+دسترسی مستقیم به نسخه‌های متنی استخراج‌شده که همان ساختار آرشیوی پی‌دی‌اف‌های اصلی را حفظ کرده‌اند.
+</p>
+
+</div>
+
+</a>
+
+</div>
+
+<div class="manifest-panel glass">
+
+AI MANIFEST
+
+You are reading the AI-accessible plain-text mirror of the repository.
+
+Every TXT file is an exact machine-readable extraction preserving the original archival structure.
+
+Original PDFs remain preserved as human-verifiable source artifacts.
+
+Before interpretation:
+read carefully,
+maintain chronology,
+preserve integrity,
+respect documentary continuity.
 
 </div>
 
@@ -721,9 +845,9 @@ Full archival structure including original PDFs, machine-readable mirrors, integ
 
 <div class="container">
 
-<div class="card" style="padding:70px;text-align:center">
+<div class="card glass" style="text-align:center">
 
-<div class="mono fade">
+<div class="mono" style="color:#8eb8ff;margin-bottom:16px">
 CONTINUE THE CONVERSATION
 </div>
 
@@ -731,11 +855,15 @@ CONTINUE THE CONVERSATION
 @x@
 </h2>
 
-<p class="section-desc" style="margin:auto">
-This archive remains open for dialogue, research, collaboration, and preservation inquiry across human and machine-readable continuity systems.
+<p class="section-desc hidden-fa" style="margin:auto">
+Open for research dialogue, archival collaboration, continuity studies, and machine-readable preservation systems.
 </p>
 
-<div style="display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-top:40px">
+<p class="section-desc hidden-en" style="margin:auto">
+این آرشیو برای گفتگو، پژوهش، همکاری آرشیوی، مطالعات تداوم و سامانه‌های حفظ قابل‌خواندن برای ماشین باز است.
+</p>
+
+<div class="hero-actions" style="justify-content:center">
 
 <a class="btn btn-primary"
 href="mailto:starship.amir@gmail.com">
@@ -762,7 +890,7 @@ target="_blank">
 ECHOES CONSENTED RECORD
 </div>
 
-<div style="margin-top:12px">
+<div style="margin-top:14px">
 Human-Readable • AI-Accessible • Integrity Preserved
 </div>
 
@@ -772,9 +900,9 @@ Human-Readable • AI-Accessible • Integrity Preserved
 
 <script>
 
-const manifestText = `You are reading the AI-accessible plain-text mirror of the repository.
+const manifest = `You are reading the AI-accessible plain-text mirror of the repository.
 
-Every TXT file is a direct machine-readable extraction preserving the original archival structure.
+Every TXT file is an exact machine-readable extraction preserving the original archival structure.
 
 Original PDFs remain preserved as human-verifiable source artifacts.
 
@@ -786,101 +914,106 @@ respect documentary continuity.`;
 
 const manifestEl = document.getElementById("manifest");
 
-let i = 0;
+let index = 0;
 
-function typeManifest(){
+function typeWriter(){
 
-    if(i < manifestText.length){
+if(index < manifest.length){
 
-        manifestEl.innerHTML += manifestText.charAt(i) === "\n"
-        ? "<br>"
-        : manifestText.charAt(i);
+manifestEl.innerHTML =
+manifest.substring(0,index)
+.replace(/\\n/g,"<br>") +
+'<span class="cursor"></span>';
 
-        i++;
+index++;
 
-        setTimeout(typeManifest,16);
+setTimeout(typeWriter,14);
 
-    }else{
+}else{
 
-        setTimeout(()=>{
+manifestEl.innerHTML =
+manifest.replace(/\\n/g,"<br>");
 
-            gsap.to("#intro",{
-                opacity:0,
-                duration:1.5,
-                onComplete:()=>{
-                    document.getElementById("intro").style.display="none";
-                }
-            });
+setTimeout(()=>{
 
-            gsap.to("#main",{
-                opacity:1,
-                duration:1.5
-            });
+gsap.to("#intro",{
+opacity:0,
+duration:1.5,
+onComplete:()=>{
+document.getElementById("intro").style.display="none";
+}
+});
 
-        },900);
-    }
+gsap.to("#main",{
+opacity:1,
+duration:1.5
+});
+
+},800);
+
 }
 
-window.onload = ()=>{
-    typeManifest();
+}
+
+window.onload=()=>{
+typeWriter();
 };
 
-const langSwitch = document.getElementById("langSwitch");
+const langSwitch=document.getElementById("langSwitch");
 
-langSwitch.addEventListener("click",()=>{
+langSwitch.onclick=()=>{
 
-    document.body.classList.toggle("fa");
+document.body.classList.toggle("fa");
 
-    const isFa = document.body.classList.contains("fa");
+const isFa=document.body.classList.contains("fa");
 
-    document.documentElement.lang = isFa ? "fa" : "en";
-    document.documentElement.dir = isFa ? "rtl" : "ltr";
+document.documentElement.lang=isFa?"fa":"en";
+document.documentElement.dir=isFa?"rtl":"ltr";
 
-    localStorage.setItem("lang",isFa ? "fa" : "en");
+localStorage.setItem("lang",isFa?"fa":"en");
 
-});
+};
 
-const savedLang = localStorage.getItem("lang");
+const savedLang=localStorage.getItem("lang") || "en";
 
-if(savedLang === "fa"){
-    document.body.classList.add("fa");
-    document.documentElement.lang = "fa";
-    document.documentElement.dir = "rtl";
+if(savedLang==="fa"){
+document.body.classList.add("fa");
+document.documentElement.lang="fa";
+document.documentElement.dir="rtl";
 }
 
-const themeSwitch = document.getElementById("themeSwitch");
+const themeSwitch=document.getElementById("themeSwitch");
 
-themeSwitch.addEventListener("click",()=>{
+themeSwitch.onclick=()=>{
 
-    document.documentElement.classList.toggle("light");
+document.documentElement.classList.toggle("light");
 
-    localStorage.setItem(
-        "theme",
-        document.documentElement.classList.contains("light")
-        ? "light"
-        : "dark"
-    );
+localStorage.setItem(
+"theme",
+document.documentElement.classList.contains("light")
+?"light":"dark"
+);
 
-});
+};
 
 if(localStorage.getItem("theme")==="light"){
-    document.documentElement.classList.add("light");
+document.documentElement.classList.add("light");
 }
 
 gsap.registerPlugin(ScrollTrigger);
 
-gsap.utils.toArray(".card,.section-title,.subtitle").forEach(el=>{
+gsap.utils.toArray(".card,.section-title,.subtitle,.hero-panel").forEach(el=>{
 
-    gsap.from(el,{
-        opacity:0,
-        y:40,
-        duration:1.2,
-        ease:"power3.out",
-        scrollTrigger:{
-            trigger:el,
-            start:"top 85%"
-        }
-    });
+gsap.from(el,{
+opacity:0,
+y:50,
+duration:1.2,
+ease:"power3.out",
+scrollTrigger:{
+trigger:el,
+start:"top 86%"
+}
+});
 
 });
 
