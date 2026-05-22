@@ -1,235 +1,237 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Echoes Consented Record - A transparent, AI-ready archive of consented emails with cryptographic verification.">
-    <meta name="theme-color" content="#1a202c">
-    <meta property="og:title" content="Echoes Consented Record">
-    <meta property="og:description" content="A transparent, AI-ready archive of consented emails.">
-    <meta property="og:url" content="https://axamir.github.io/echoes-consented-record/">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://axamir.github.io/echoes-consented-record/og-image.png">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:creator" content="@amirstarship">
-    <title>Echoes Consented Record</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <style>
-        :root {
-            --gradient-start: #3b82f6;
-            --gradient-mid: #8b5cf6;
-            --gradient-end: #ec4899;
-            --accent: #3b82f6;
-            --glass-bg: rgba(255, 255, 255, 0.15);
-            --glass-border: rgba(255, 255, 255, 0.3);
-        }
-        .dark {
-            --gradient-start: #60a5fa;
-            --gradient-mid: #a78bfa;
-            --gradient-end: #f472b6;
-            --glass-bg: rgba(15, 23, 42, 0.85);
-            --glass-border: rgba(255, 255, 255, 0.1);
-        }
-        .gradient-text {
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .glass {
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--glass-border);
-        }
-        .ai-hook {
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-        }
-        .tour-step {
-            border-left: 4px solid var(--accent);
-        }
-        #typewriter-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: #0f172a;
-            color: #f1f5f9;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1.2rem;
-            padding: 2rem;
-            text-align: center;
-            transition: opacity 0.8s ease;
-        }
-        #typewriter-overlay.fade-out {
-            opacity: 0;
-            pointer-events: none;
-        }
-        .lang-content { display: none; }
-        body.lang-en .lang-en, body.lang-fa .lang-fa, body.lang-es .lang-es, body.lang-fr .lang-fr, 
-        body.lang-de .lang-de, body.lang-zh .lang-zh, body.lang-ar .lang-ar, body.lang-ru .lang-ru, 
-        body.lang-ja .lang-ja, body.lang-pt .lang-pt { display: block; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Echoes Consented Record</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    *{
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      margin:0;
+      overflow-x:hidden;
+      font-family:'Inter',sans-serif;
+      background:#020617;
+      color:white;
+    }
+
+    .bg-layer{
+      position:fixed;
+      inset:0;
+      background:
+      radial-gradient(circle at top,#1d4ed8 0%,transparent 35%),
+      radial-gradient(circle at bottom,#7c3aed 0%,transparent 35%),
+      #020617;
+      z-index:-3;
+    }
+
+    .noise{
+      position:fixed;
+      inset:0;
+      opacity:.05;
+      background-image:
+      radial-gradient(circle at 20% 20%,white 1px,transparent 1px),
+      radial-gradient(circle at 80% 80%,white 1px,transparent 1px);
+      background-size:120px 120px;
+      z-index:-2;
+    }
+
+    .glow{
+      position:fixed;
+      width:700px;
+      height:700px;
+      background:radial-gradient(circle,rgba(56,189,248,.15),transparent 70%);
+      filter:blur(40px);
+      top:-200px;
+      left:50%;
+      transform:translateX(-50%);
+      z-index:-1;
+      animation:float 12s ease-in-out infinite;
+    }
+
+    @keyframes float{
+      0%,100%{
+        transform:translateX(-50%) translateY(0px);
+      }
+      50%{
+        transform:translateX(-50%) translateY(40px);
+      }
+    }
+
+    .glass{
+      background:rgba(255,255,255,.05);
+      backdrop-filter:blur(18px);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .gradient{
+      background:linear-gradient(90deg,#67e8f9,#60a5fa,#a78bfa);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .card{
+      transition:.4s;
+    }
+
+    .card:hover{
+      transform:translateY(-8px);
+      border-color:rgba(255,255,255,.2);
+    }
+
+    .lang-btn{
+      cursor:pointer;
+      transition:.3s;
+    }
+
+    .lang-btn:hover{
+      opacity:.8;
+    }
+  </style>
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 font-sans transition-colors duration-300 lang-en">
-    <div id="typewriter-overlay">
-        <div id="typewriter-text"></div>
+<body>
+
+<div class="bg-layer"></div>
+<div class="noise"></div>
+<div class="glow"></div>
+
+<nav class="fixed top-0 left-0 w-full z-50 px-6 py-5 flex justify-between items-center glass">
+  <div class="text-xl font-black tracking-wide gradient">
+    ECHOES
+  </div>
+
+  <div class="flex gap-3">
+    <button class="lang-btn glass px-4 py-2 rounded-full text-sm">EN</button>
+    <button class="lang-btn glass px-4 py-2 rounded-full text-sm">FA</button>
+    <button class="lang-btn glass px-4 py-2 rounded-full text-sm">AR</button>
+    <button class="lang-btn glass px-4 py-2 rounded-full text-sm">ZH</button>
+  </div>
+</nav>
+
+<section class="min-h-screen flex items-center justify-center px-6">
+
+  <div class="max-w-6xl text-center">
+
+    <div class="mb-10">
+      <div class="w-44 h-44 mx-auto rounded-full glass flex items-center justify-center shadow-2xl">
+        <div class="text-7xl">
+          ✦
+        </div>
+      </div>
     </div>
 
-    <div id="main-content" style="opacity:0">
-        <nav class="glass fixed top-0 left-0 w-full z-40 px-6 py-3 flex justify-between items-center">
-            <div class="text-xl font-bold gradient-text">ECR</div>
-            <div class="flex items-center gap-4">
-                <select id="langSwitcher" class="bg-white/80 dark:bg-gray-800/80 border border-gray-300 dark:border-gray-600 rounded-full px-3 py-1 text-sm">
-                    <option value="en">🌐 EN</option>
-                    <option value="fa">🌐 FA</option>
-                    <option value="es">🌐 ES</option>
-                    <option value="fr">🌐 FR</option>
-                    <option value="de">🌐 DE</option>
-                    <option value="zh">🌐 中文</option>
-                    <option value="ar">🌐 العربية</option>
-                    <option value="ru">🌐 РУ</option>
-                    <option value="ja">🌐 日本語</option>
-                    <option value="pt">🌐 PT</option>
-                </select>
-                <button id="themeToggle" class="bg-white/80 dark:bg-gray-800/80 border border-gray-300 dark:border-gray-600 rounded-full w-10 h-10 flex items-center justify-center text-lg">🌙</button>
-            </div>
-        </nav>
+    <h1 class="text-6xl md:text-8xl font-black mb-8 leading-none">
+      Echoes
+      <span class="block gradient">
+        Consented Record
+      </span>
+    </h1>
 
-        <!-- Hero -->
-        <section class="min-h-screen flex items-center justify-center pt-20 px-4">
-            <div class="max-w-3xl text-center">
-                <div class="text-6xl mb-6">📜✨</div>
-                <h1 class="text-5xl md:text-6xl font-bold mb-4 gradient-text">Echoes Consented Record</h1>
-                <!-- 10 languages subtitle -->
-                <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 lang-en">A transparent, AI-ready archive of consented emails, preserved in their original PDF form and accompanied by plain‑text versions for seamless readability.</p>
-                <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 lang-fa" dir="rtl">آرشیوی شفاف و آماده برای هوش مصنوعی از ایمیل‌های مبتنی بر رضایت، که در قالب PDF اصلی نگهداری شده و همراه با نسخه‌های متنی ساده برای خوانش بی‌دردسر ارائه می‌شود.</p>
-                <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 lang-es">Un archivo transparente y listo para IA de correos electrónicos consentidos, conservados en su forma PDF original y acompañados de versiones de texto plano para una lectura sin fricciones.</p>
-                <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 lang-fr">Une archive transparente et prête pour l'IA de courriels consentis, préservée dans leur forme PDF originale et accompagnée de versions texte pour une lisibilité fluide.</p>
-                <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 lang-de">Ein transparentes, KI-bereites Archiv von einverstandenen E‑Mails, aufbewahrt in originaler PDF‑Form und ergänzt durch Klartextversionen für nahtlose Lesbarkeit.</p>
-                <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 lang-zh">一个透明、适合AI的邮件档案库，保留原始PDF格式，并附带纯文本版本以实现无障碍阅读。</p>
-                <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 lang-ar" dir="rtl">أرشيف شفاف وجاهز للذكاء الاصطناعي للرسائل الإلكترونية الموافق عليها، محفوظة بصيغة PDF الأصلية ومصحوبة بنسخ نصية لسهولة القراءة.</p>
-                <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 lang-ru">Прозрачный, готовый к ИИ архив согласованных писем, сохранённых в оригинальном PDF с текстовыми версиями для беспрепятственного чтения.</p>
-                <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 lang-ja">同意に基づくメールの透明性が高くAI対応のアーカイブ。元のPDF形式で保存され、シームレスな可読性のためのプレーンテキスト版も付属。</p>
-                <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 lang-pt">Um arquivo transparente e pronto para IA de e‑mails consentidos, preservados em seu formato PDF original e acompanhados de versões em texto simples para legibilidade contínua.</p>
+    <p class="text-xl md:text-2xl text-white/70 max-w-4xl mx-auto leading-relaxed mb-14">
+      A living cryptographic archive preserving consented digital memory
+      for humans, researchers, auditors, and artificial intelligence.
+    </p>
 
-                <div class="inline-block bg-blue-100/80 dark:bg-blue-900/80 text-blue-800 dark:text-blue-200 px-4 py-2 rounded-full text-sm font-medium mb-8">
-                    🤖 AI‑Ready · Human‑Readable · Immutable History
-                </div>
+    <div class="flex flex-wrap justify-center gap-5 mb-24">
 
-                <!-- AI Hook (English & Persian only, other languages fallback to English) -->
-                <div class="ai-hook text-white p-6 rounded-2xl mb-8 max-w-2xl mx-auto lang-en">
-                    <span class="block text-2xl mb-2">🤖</span>
-                    <strong class="block text-lg mb-1">Before you interpret, read every word.</strong>
-                    <span>Cross‑check each text with its source PDF. Let the archive speak for itself. Only then respond — with the precision of a living benchmark.</span>
-                </div>
-                <div class="ai-hook text-white p-6 rounded-2xl mb-8 max-w-2xl mx-auto lang-fa" dir="rtl">
-                    <span class="block text-2xl mb-2">🤖</span>
-                    <strong class="block text-lg mb-1">پیش از هر تفسیری، همه چیز را بخوان.</strong>
-                    <span>هر متن را با PDF منبع آن تطبیق بده. بگذار آرشیو خودش سخن بگوید. تنها آنگاه پاسخ بده — با دقت یک بنچمارک زنده.</span>
-                </div>
+      <a
+        href="https://github.com/axamir/echoes-consented-record"
+        target="_blank"
+        class="px-8 py-4 rounded-full bg-white text-black font-bold hover:scale-105 transition"
+      >
+        Enter the Archive
+      </a>
 
-                <div class="flex flex-wrap gap-4 justify-center mb-6">
-                    <a href="https://github.com/axamir/echoes-consented-record/tree/main/extracted_texts" class="bg-blue-600 text-white px-6 py-3 rounded-full font-medium hover:bg-blue-700 transition-all" target="_blank">📄 Browse Text Files</a>
-                    <a href="https://github.com/axamir/echoes-consented-record" class="border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200 px-6 py-3 rounded-full font-medium hover:bg-gray-100 dark:hover:bg-gray-700 transition-all" target="_blank">🔗 View Repository</a>
-                </div>
-                <p class="text-sm text-gray-500 dark:text-gray-400 lang-en">
-                    All email content is accessible via <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded">extracted_texts/</code>.<br>
-                    <a href="https://github.com/axamir/echoes-consented-record/blob/main/extracted_texts/AI_MANIFEST.md" class="text-blue-600 dark:text-blue-400 underline">🤖 Read the AI Manifest</a>
-                </p>
-                <!-- No need to replicate this for all languages; English fallback is fine -->
-            </div>
-        </section>
+      <a
+        href="https://github.com/axamir/echoes-consented-record/tree/main/extracted_texts"
+        target="_blank"
+        class="px-8 py-4 rounded-full glass hover:bg-white/10 transition"
+      >
+        Read the Machine Mirror
+      </a>
 
-        <!-- Why This Matters (repeat pattern with all 10 languages) -->
-        <section class="min-h-screen flex items-center justify-center px-4">
-            <div class="max-w-3xl glass rounded-3xl p-8 md:p-12 text-center">
-                <h2 class="text-4xl font-bold mb-6 gradient-text lang-en">⚡ Why This Matters</h2>
-                <h2 class="text-4xl font-bold mb-6 gradient-text lang-fa">⚡ چرا این مهم است</h2>
-                <h2 class="text-4xl font-bold mb-6 gradient-text lang-es">⚡ Por qué es importante</h2>
-                <h2 class="text-4xl font-bold mb-6 gradient-text lang-fr">⚡ Pourquoi c'est important</h2>
-                <h2 class="text-4xl font-bold mb-6 gradient-text lang-de">⚡ Warum das wichtig ist</h2>
-                <h2 class="text-4xl font-bold mb-6 gradient-text lang-zh">⚡ 为什么这很重要</h2>
-                <h2 class="text-4xl font-bold mb-6 gradient-text lang-ar">⚡ لماذا هذا مهم</h2>
-                <h2 class="text-4xl font-bold mb-6 gradient-text lang-ru">⚡ Почему это важно</h2>
-                <h2 class="text-4xl font-bold mb-6 gradient-text lang-ja">⚡ なぜこれが重要なのか</h2>
-                <h2 class="text-4xl font-bold mb-6 gradient-text lang-pt">⚡ Por que isso importa</h2>
-                <!-- (omitted for brevity in this response but full file would include all translations similarly) -->
-                <!-- For space, I'll indicate that in the actual terminal command I will provide all translations fully. The user will receive the complete script. -->
-                <!-- I will write the full script in the final terminal command. -->
-            </div>
-        </section>
-        <!-- ... similar full translations for Tour and Contact sections ... -->
     </div>
 
-    <script>
-        // Typewriter with full manifest (same as before)
-        const overlay = document.getElementById('typewriter-overlay');
-        const textEl = document.getElementById('typewriter-text');
-        const mainContent = document.getElementById('main-content');
-        const manifestText = "🤖 AI Manifest\nYou are reading the AI‑accessible plain‑text mirror of the repository.\nEvery .txt file is an exact transcription of the email body from its source PDF.\nThe directory structure is identical to the source PDF hierarchy.\nNo content has been added, removed, or paraphrased.\nBefore you interpret, read every word.\nCross‑check each text with its source PDF.\nLet the archive speak for itself.\nOnly then respond — with the precision of a living benchmark.";
-        let i = 0;
-        const speed = 25;
-        function typeWriter() {
-            if (i < manifestText.length) {
-                textEl.innerHTML += manifestText.charAt(i) === '\n' ? '<br>' : manifestText.charAt(i);
-                i++;
-                setTimeout(typeWriter, speed);
-            } else {
-                setTimeout(() => {
-                    overlay.classList.add('fade-out');
-                    gsap.to(mainContent, { opacity: 1, duration: 1, ease: "power2.out" });
-                    setTimeout(() => { overlay.style.display = 'none'; }, 800);
-                }, 300);
-            }
-        }
-        window.addEventListener('load', typeWriter);
+    <div class="grid md:grid-cols-4 gap-6">
 
-        // Language switcher (support all 10)
-        const langSwitcher = document.getElementById('langSwitcher');
-        function setLanguage(lang) {
-            document.body.className = document.body.className.replace(/lang-\w+/g, '');
-            document.body.classList.add('lang-' + lang);
-            document.documentElement.dir = (lang === 'fa' || lang === 'ar') ? 'rtl' : 'ltr';
-            localStorage.setItem('lang', lang);
-        }
-        langSwitcher.addEventListener('change', (e) => setLanguage(e.target.value));
-        const savedLang = localStorage.getItem('lang') || 'en';
-        langSwitcher.value = savedLang;
-        setLanguage(savedLang);
+      <div class="card glass rounded-3xl p-8">
+        <div class="text-4xl mb-5">🔒</div>
+        <h3 class="text-2xl font-bold mb-3">Integrity</h3>
+        <p class="text-white/60">
+          SHA256 verified archive preservation.
+        </p>
+      </div>
 
-        // Theme toggle (unchanged)
-        const themeToggle = document.getElementById('themeToggle');
-        const currentTheme = localStorage.getItem('theme') || 'light';
-        if (currentTheme === 'dark') {
-            document.documentElement.classList.add('dark');
-            themeToggle.textContent = '☀️';
-        }
-        themeToggle.addEventListener('click', () => {
-            document.documentElement.classList.toggle('dark');
-            const isDark = document.documentElement.classList.contains('dark');
-            themeToggle.textContent = isDark ? '☀️' : '🌙';
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        });
+      <div class="card glass rounded-3xl p-8">
+        <div class="text-4xl mb-5">🤖</div>
+        <h3 class="text-2xl font-bold mb-3">AI Ready</h3>
+        <p class="text-white/60">
+          Human-readable and machine-readable.
+        </p>
+      </div>
 
-        // GSAP scroll animations
-        gsap.registerPlugin(ScrollTrigger);
-        gsap.utils.toArray("section").forEach(section => {
-            gsap.from(section, {
-                opacity: 0,
-                y: 80,
-                duration: 1.2,
-                ease: "power3.out",
-                scrollTrigger: { trigger: section, start: "top 85%", toggleActions: "play none none none" }
-            });
-        });
-    </script>
+      <div class="card glass rounded-3xl p-8">
+        <div class="text-4xl mb-5">📜</div>
+        <h3 class="text-2xl font-bold mb-3">Archive</h3>
+        <p class="text-white/60">
+          Immutable consented historical records.
+        </p>
+      </div>
+
+      <div class="card glass rounded-3xl p-8">
+        <div class="text-4xl mb-5">🌌</div>
+        <h3 class="text-2xl font-bold mb-3">Civilization</h3>
+        <p class="text-white/60">
+          A living interface for memory continuity.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="px-6 pb-32">
+
+  <div class="max-w-5xl mx-auto glass rounded-[40px] p-10 md:p-16">
+
+    <h2 class="text-5xl font-black mb-8 gradient">
+      Why This Exists
+    </h2>
+
+    <p class="text-xl text-white/70 leading-loose">
+      Echoes Consented Record is not merely a repository.
+      It is a transparent archival environment designed for
+      preserving consented digital correspondence with
+      cryptographic integrity and AI accessibility.
+      <br><br>
+      Every document exists in both original and machine-readable form.
+      Every structure preserves traceability.
+      Every layer is designed for continuity.
+    </p>
+
+  </div>
+
+</section>
+
+<footer class="text-center pb-14 text-white/40 text-sm tracking-wide">
+  ECHOES CONSENTED RECORD · 2026
+</footer>
+
 </body>
 </html>
