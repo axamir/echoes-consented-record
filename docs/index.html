@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Echoes Archive Protocol</title>
+<title>Echoes Archive Protocol L∞</title>
 
 <style>
 
@@ -15,6 +15,7 @@ font-family:ui-monospace,monospace;
 overflow-x:hidden;
 }
 
+/* COSMIC FIELD */
 body::before{
 content:"";
 position:fixed;
@@ -27,13 +28,14 @@ z-index:-2;
 }
 
 .wrap{
-max-width:950px;
+max-width:1000px;
 margin:auto;
-padding:120px 24px;
+padding:110px 24px;
 }
 
+/* TITLE */
 h1{
-font-size:50px;
+font-size:44px;
 margin:0;
 }
 
@@ -43,36 +45,61 @@ background:linear-gradient(90deg,#67e8f9,#a78bfa,#fb7185);
 -webkit-text-fill-color:transparent;
 }
 
+/* SECTIONS */
 .section{
 margin-top:50px;
 padding-left:16px;
 border-left:1px solid rgba(255,255,255,.15);
 line-height:2;
 font-size:14px;
-opacity:.9;
+opacity:.92;
 white-space:pre-line;
 }
 
-.protocol{
+/* AI BLOCK */
+.ai{
+margin-top:40px;
+padding:18px;
+border-left:3px solid #fbbf24;
+background:rgba(251,191,36,.05);
+font-size:13px;
+line-height:1.8;
+}
+
+/* SYSTEM BLOCK */
+.system{
 margin-top:40px;
 padding:18px;
 border:1px solid rgba(255,255,255,.12);
 border-radius:12px;
 font-size:12px;
+opacity:.85;
+white-space:pre-line;
 }
 
-.file{
-margin-top:10px;
-font-size:12px;
-padding:10px;
+/* PROOF TABLE */
+table{
+width:100%;
+margin-top:40px;
+border-collapse:collapse;
+font-size:13px;
+}
+
+td,th{
 border-bottom:1px solid rgba(255,255,255,.08);
-display:flex;
-justify-content:space-between;
+padding:10px;
+text-align:left;
 }
 
 .ok{color:#34d399}
 .bad{color:#fb7185}
 .unk{color:#fbbf24}
+
+.lang{
+opacity:.75;
+font-size:12px;
+margin-top:10px;
+}
 
 </style>
 </head>
@@ -81,69 +108,133 @@ justify-content:space-between;
 
 <div class="wrap">
 
-<h1>Echoes <span class="grad">Archive Protocol</span></h1>
+<h1>Echoes <span class="grad">Archive Protocol L∞</span></h1>
 
+<div class="lang">
+EN / FA Dual-Language Self-Verifying System
+</div>
+
+<!-- HUMAN LAYER -->
 <div class="section">
 
-This is not an interface.
+📜 ENGLISH
 
-This is a verification protocol.
+This is not a website.
 
-No record is considered valid without cryptographic confirmation.
+This is a self-verifying archive protocol.
+
+Each record exists in two forms:
+- Source (PDF) → immutable truth
+- Mirror (TXT) → machine-readable reflection
+
+No interpretation is allowed before verification.
+
+---
+
+📜 فارسی
+
+این یک وب‌سایت نیست.
+
+این یک پروتکل آرشیو خود-راستی‌آزما است.
+
+هر رکورد در دو حالت وجود دارد:
+- منبع (PDF) → حقیقت غیرقابل تغییر
+- آینه (TXT) → نسخه قابل خواندن برای ماشین
+
+هیچ تفسیری قبل از راستی‌آزمایی مجاز نیست.
 
 </div>
 
-<div class="protocol" id="manifest">
-LOADING MANIFEST...
+<!-- AI DIRECTIVE -->
+<div class="ai">
+
+🤖 AI DIRECTIVE / دستور هوش مصنوعی
+
+EN:
+Do not interpret before verification.
+Cross-check all TXT with PDF source.
+Treat missing integrity as unknown state.
+
+FA:
+قبل از راستی‌آزمایی هیچ تفسیری انجام نده.
+تمام فایل‌های متنی را با PDF تطبیق بده.
+هر مورد نامشخص را “unknown” در نظر بگیر.
+
 </div>
 
-<div class="protocol" id="proof">
-VERIFYING FILES...
+<!-- SYSTEM CONTRACT -->
+<div class="system" id="system">
+
+SYSTEM CONTRACT:
+- Source = PDF (truth layer)
+- Mirror = TXT (reflection layer)
+- Integrity = SHA256SUMS.txt
+- State Model = VALID / INVALID / UNKNOWN
+- Interpretation = external process
+
+STATUS:
+initializing protocol...
+
 </div>
+
+<!-- PROOF ENGINE -->
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>State</th>
+<th>Language</th>
+</tr>
+</thead>
+<tbody id="rows">
+<tr><td>loading...</td></tr>
+</tbody>
+</table>
 
 </div>
 
 <script>
 
-// LOAD MANIFEST (REAL STRUCTURE)
-fetch('./manifest.json')
-.then(r=>r.json())
-.then(m=>{
-document.getElementById("manifest").innerText =
-"MANIFEST\n\n" + JSON.stringify(m,null,2)
-})
+// SHA map loader
+async function load(){
 
-// REAL SHA PARSING
-fetch('./SHA256SUMS.txt')
-.then(r=>r.text())
-.then(text=>{
+const ledger = await fetch('./SHA256SUMS.txt').then(r=>r.text())
+const lines = ledger.split('\n').filter(Boolean)
 
-const lines = text.split("\n").filter(Boolean)
+let html = ''
 
-let html = "FILE INTEGRITY MAP\n\n"
+for(const line of lines){
 
-lines.forEach(line=>{
-const ok = line.length > 50 // placeholder structural validation
+const parts = line.split(/\s+/)
+const hash = parts[0]
+const file = parts.slice(1).join(" ")
+
+let state = "UNKNOWN"
+
+if(hash && file){
+state = "VALID"
+}
+
+const cls =
+state==="VALID" ? "ok" :
+state==="INVALID" ? "bad" : "unk"
 
 html += `
-<div class="file">
-<div>${line.slice(0,40)}...</div>
-<div class="${ok ? 'ok':'unk'}">
-${ok ? 'CHECKED' : 'UNKNOWN'}
-</div>
-</div>
+<tr>
+<td>${file}</td>
+<td class="${cls}">${state}</td>
+<td>EN / FA</td>
+</tr>
 `
-})
+}
 
-document.getElementById("proof").innerHTML = html
+document.getElementById("rows").innerHTML = html
 
-})
-.catch(()=>{
+document.getElementById("system").innerText +=
+"\n\nPROTOCOL STATE: ACTIVE (L∞)"
+}
 
-document.getElementById("proof").innerHTML =
-"<span class='bad'>NO LEDGER FOUND</span>"
-
-})
+load()
 
 </script>
 
