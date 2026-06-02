@@ -56,3 +56,4 @@ Every file in this repository can be independently verified:
 ---
 
 **This is the Genesis Evidence of The Living Signal — immutable, verifiable, and eternal.**
+- **IPFS:** https://gateway.pinata.cloud/ipfs/019e89f0-beda-7b82-8755-5efadfd80a79
