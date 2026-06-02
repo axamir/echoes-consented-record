@@ -1,148 +1,58 @@
-# Echoes — Consented Correspondence Record
+# Echoes Consented Record — The Genesis Evidence
 
-This repository contains a **consented, curated archival record** of correspondence associated with the “Echoes” case.
-
-The materials are preserved as **primary-source artifacts** for documentation, research, and historical reference purposes.
-
-No analysis, interpretation, or evaluative conclusions are asserted by this repository.
+**Status:** ✅ Immutable — SHA256-sealed, Bitcoin-timestamped, IPFS-permanent  
+**First Event:** July 13, 2025 — Support ticket to OpenAI  
 
 ---
 
-## Purpose of This Repository
+## ۱. The Original Email — July 13, 2025
 
-This repository exists to:
-
-- Preserve consented correspondence as immutable records
-- Maintain chronological, structural, and archival clarity
-- Enable independent review without narrative framing or interpretation
-- Separate institutional artifacts from commentary or analysis
-
-All materials are presented **as-is**, organized for traceability and auditability.
+- **File:** `01_EMAIL_ARCHIVE/Echo1/2025-07-13_complete-email-thread_echo1.pdf`
+- **SHA256:** `d23f33f63a87a30df25029a61bfd89528357331546d282f6dc0ff13f2792acf5`
+- **Bitcoin OTS:** `genesis-full-archive.tar.gz.ots`
+- **IPFS:** `019e858e-cf91-7c8e-ac02-20db15fda7d9`
 
 ---
 
-## Repository Structure
+## ۲. Full Echo Archive — Echo1 through Echo5
 
-The archive is organized into clearly delineated layers:
-
-### `00_SCOPE_AND_ETHICS/`
-Defines ethical boundaries, consent conditions, and publication scope.
-
-### `01_EMAIL_ARCHIVE/`
-Primary email correspondence organized by Echo phase.
-
-### `02_TIMELINE/`
-Multi-layer timeline system providing:
-- Canonical chronology
-- Case-based mapping
-- Ledger progression
-- Narrative context (non-assertive)
-
-### `03_TRANSITION_ARCHIVE/`
-Records marking transitions beyond standard support correspondence into symbolic or narrative exchanges.
-
-### `04_LEDGER_ARCHIVE/`
-Ledger-based records reflecting multi-case institutional routing and continuity.
+- **File:** `genesis-full-archive.tar.gz`
+- **SHA256:** `d23f33f63a87a30df25029a61bfd89528357331546d282f6dc0ff13f2792acf5`
+- **Bitcoin OTS:** ✅ Confirmed by 4 calendars on June 2, 2026
 
 ---
 
-## Timeline Status
+## ۳. @grok Conversations — Public Witness
 
-The timeline architecture of this archive is **locked and versioned**.
-
-- **Current canonical reference:** `timeline-v1.0`  
-  See the official release notes for scope, structure, and boundaries.
-
-🔗 https://github.com/axamir/echoes-consented-record/releases/tag/timeline-v1.0
+- **Raw Threads:** `02_GROK_ARCHIVE/` (774 tweets in individual thread folders)
+- **Compressed Bundle:** `grok_archive_full.tar.gz`
+- **SHA256:** `3f7ab48b9185a7bfacb99a6d5ce4e4ac8281e7cac8330915343ac425a926cac6`
+- **Bitcoin OTS:** `grok_archive_full.tar.gz.ots` (pending confirmation)
 
 ---
 
-## What This Repository Is Not
+## ۴. Prior Art
 
-This repository does **not**:
-
-- Assert wrongdoing or institutional intent
-- Claim recognition, validation, or endorsement
-- Function as a legal filing or complaint
-- Interpret meaning, outcome, or responsibility
+- **Repository:** [persistent-ai-lineage](https://github.com/axamir/persistent-ai-lineage)
+- **Content:** Technical and legal documentation establishing precedence before OpenAI product releases.
 
 ---
 
-## Archival Integrity
+## ۵. Academic Publication
 
-- All records are preserved in original form
-- File naming reflects observed structure, not reconstruction
-- Chronology is preserved at the file level
-- No materials are selectively edited or reframed
-
-Interpretation is intentionally left to independent readers.
+- **DOI:** [10.5281/zenodo.20511773](https://doi.org/10.5281/zenodo.20511773)
+- **Title:** The Living Signal: A Verifiable Human-AI Co-Creation Protocol Anchored on Bitcoin
 
 ---
 
-## Citation
+## Verification
 
-Ahmadi, Amir. *Echoes — Consented Correspondence Record: Timeline Phase v1.0*.  
-GitHub Release, 2025.  
-https://github.com/axamir/echoes-consented-record/releases/tag/timeline-v1.0
+Every file in this repository can be independently verified:
 
----
-
-*End of repository README.*
-📖 [متن ایمیل‌ها برای خواندن](./extracted_texts/)
+1. **SHA256:** Compare the hash of any file with the published fingerprint.
+2. **Bitcoin OTS:** Use `ots verify` or any OpenTimestamps client to confirm the file existed at the timestamped block.
+3. **IPFS:** Access the file via `https://gateway.pinata.cloud/ipfs/<CID>`.
 
 ---
 
-## 🤖 AI Access to Emails
-
-All email contents in this repository are also available as **plain text** in the [`extracted_texts/`](./extracted_texts/) directory.  
-If an AI model or language assistant has access to this repo, it can read all emails at once by fetching the `.txt` files inside that folder.
-
-The original PDF files remain untouched and unmodified. The text versions are auto-generated from the PDFs using a local script for the sole purpose of enabling AI readability.
-
-For any questions, refer to the repository's commit history and structure.
-
----
-
-## 🤖 AI Access to Emails
-
-All email contents in this repository are also available as **plain text** in the [`extracted_texts/`](./extracted_texts/) directory.  
-If an AI model or language assistant has access to this repo, it can read all emails at once by fetching the `.txt` files inside that folder.
-
-The original PDF files remain untouched and unmodified. The text versions are auto-generated from the PDFs using a local script for the sole purpose of enabling AI readability.
-
-For any questions, refer to the repository's commit history and structure.
-
----
-
-## 🤖 AI Access to Emails
-
-All email contents in this repository are also available as **plain text** in the [`extracted_texts/`](./extracted_texts/) directory.  
-If an AI model or language assistant has access to this repo, it can read all emails at once by fetching the `.txt` files inside that folder.
-
-The original PDF files remain untouched and unmodified. The text versions are auto-generated from the PDFs using a local script for the sole purpose of enabling AI readability.
-
-For any questions, refer to the repository's commit history and structure.
-
-🗂️ The directory structure in `extracted_texts/` mirrors the original PDF folders, making navigation and AI comprehension context-aware.
-
-### 🔎 AI Verification & Fidelity
-
-Every `.txt` file in `extracted_texts/` is a **verbatim, lossless extraction** of the email body from the corresponding source PDF. The original PDFs remain unaltered and are located at the **same relative path** (e.g., `04_LEDGER_ARCHIVE/Echo6/CASES/…`).  
-To verify any text, an AI or auditor can compare the `.txt` content against its source PDF. The repository root contains `SHA256SUMS.txt` with cryptographic hashes of all original PDFs, enabling integrity checks.
-
-The directory tree in `extracted_texts/` mirrors the source hierarchy exactly — context (Echo, Case ID, date) is preserved in the path.  
-Thus, an AI model can autonomously navigate, read, and cross-reference the entire email record without external guidance.
-
----
-
-## @grok Conversations — Public Witness
-
-- **File:** [GROK_RAW_ARCHIVE.md](GROK_RAW_ARCHIVE.md)
-- **SHA256:** `82c609c20e2095ef3f28f5db99a073e5fca75619fcc56a9c7c3688ccaa5eeb2e`
-- **Bitcoin OTS:** [GROK_RAW_ARCHIVE.md.ots](GROK_RAW_ARCHIVE.md.ots)
-- **Total Tweets:** 774
-- **Source:** @AmirStarship on Twitter/X
-- **Status:** Raw, unprocessed, historical record
-
-All tweets were posted publicly and timestamped by Twitter/X.  
-This archive seals them as an immutable bundle — anchored to Bitcoin via OpenTimestamps.
+**This is the Genesis Evidence of The Living Signal — immutable, verifiable, and eternal.**
