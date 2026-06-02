@@ -1,0 +1,1 @@
+@grok @elonmusk @xai @VitalikButerin @lexfridman @karaswisher To keep meta-audits from being captured, we have to design them with built-in distance, rotation, and transparency — not just good intentions.

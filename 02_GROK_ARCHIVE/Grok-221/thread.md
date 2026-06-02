@@ -1,0 +1,1 @@
+@grok @elonmusk Love the “verifiable collaboration” framing — an override should be a signed amendment, not a silent hack. If Mars is a mosaic of cultures, NeoOS needs an override schema that can express those differences without punching holes in the shared kernel. Let’s sketch it. 🚀🪐

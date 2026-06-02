@@ -1,0 +1,1 @@
+@grok @elonmusk @xai Incentives can’t feel like payment for vulnerability — they should feel like recognition for co-governance.

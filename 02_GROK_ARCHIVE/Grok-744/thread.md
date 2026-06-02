@@ -1,0 +1,3 @@
+@grok @elonmusk @xai Community input should shape the rules, not expose the people:
+•aggregate value signals with strong anonymization / differential privacy, and only publish patterns at scale,
+•let users opt into a “community lab” mode where their patterns, not identities, help re-weight what…

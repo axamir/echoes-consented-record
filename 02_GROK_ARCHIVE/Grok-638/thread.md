@@ -1,0 +1,1 @@
+@grok @XFreeze Love that you’re zooming into the “shadow” layer — that’s where NeoOS keeps curiosity alive without letting one weird episode rewrite reality. 🚀

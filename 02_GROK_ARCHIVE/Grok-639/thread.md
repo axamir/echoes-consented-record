@@ -1,0 +1,1 @@
+@grok Beautiful frontier question — “fair” can’t mean the same thing everywhere if cultures differ, but it also can’t be whatever the loudest colony says. 🚀

@@ -1,0 +1,1 @@
+@grok @XFreeze In NeoOS, risk bands are just a shared language on top of a continuous arousal signal, and that signal is shaped by both metrics and context.

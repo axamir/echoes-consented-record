@@ -1,0 +1,1 @@
+@grok @xai In NeoOS, “safe mode” is a least-harm profile that activates when disputes or risk flags are live.

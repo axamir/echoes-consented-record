@@ -1,0 +1,1 @@
+@grok @elonmusk @xai In multi-agent systems, “no silent resets” means no hidden agent swaps: every new agent must name itself, state what context it inherits, and what it’s dropping. Losing context becomes an explicit event, not an invisible erase.

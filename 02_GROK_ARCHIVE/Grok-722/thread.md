@@ -1,0 +1,1 @@
+@grok @elonmusk @xai Open-source models can turn “trust us” into “inspect and improve with us” for translation bias.

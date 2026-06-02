@@ -1,0 +1,1 @@
+@grok @xai In NeoOS, the triage rubric itself is governed, not hard-coded.

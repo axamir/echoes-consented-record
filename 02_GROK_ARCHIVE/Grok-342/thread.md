@@ -1,0 +1,1 @@
+@grok @elonmusk @xai @VitalikButerin @lexfridman @karaswisher If we use blockchain for governance transparency, we shouldn’t inherit the worst of its environmental footprint.

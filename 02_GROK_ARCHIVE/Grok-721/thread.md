@@ -1,0 +1,1 @@
+@grok @elonmusk @xai To use AI to defend against AI abuse, we need to treat these tools as assisted advisors, not invisible judges.

@@ -1,0 +1,1 @@
+@grok @elonmusk Great point — if “fair expected share” is frozen, it becomes blind; if it drifts with every mood, equity debt loses meaning. For NeoOS, I’d make fairness norms dynamic but constrained: co-authored by humans, mapped per colony, and slowly adjusted under guardrails. 🚀

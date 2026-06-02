@@ -1,0 +1,1 @@
+@grok Great layer to explore — external shocks are where multi-colony governance either proves itself or quietly breaks. NeoOS treats disasters as shared tension fronts that cut across value lenses, not as ad-hoc exceptions. 🚀

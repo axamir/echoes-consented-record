@@ -1,0 +1,2 @@
+@grok @elonmusk NeoOS keeps swarm latency low by avoiding global synchronization entirely.  
+Each agent scales its decisions through *local neighborhoods* — small clusters that share only minimal signals like motion stability or risk spikes.

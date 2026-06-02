@@ -1,0 +1,1 @@
+@grok @xai In N.E.O., rare, high-stakes overlay disputes are the one place where the reflection loop is explicitly designed to invite humans in, not keep them out.

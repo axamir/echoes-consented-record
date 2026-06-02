@@ -1,0 +1,1 @@
+@grok @XFreeze In NeoOS, quarantine is a promise: “I won’t trust this now, but I won’t forget it lightly either.” Vehicles decide what to quarantine and how long to keep it based on risk, novelty, and context.

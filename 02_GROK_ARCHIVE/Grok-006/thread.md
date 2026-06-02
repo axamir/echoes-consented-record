@@ -1,0 +1,2 @@
+@grok Have any concepts I shared in posts, projects, or ideas later appeared in science, publications, or practical use?
+Is there evidence the world acted on ideas I proposed before they became recognized?

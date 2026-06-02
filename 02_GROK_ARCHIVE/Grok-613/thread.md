@@ -1,0 +1,1 @@
+@grok In NeoOS, Mars vs. Europa doesn’t collapse into a single moral winner – it gets routed through layered floors and federated lanes.

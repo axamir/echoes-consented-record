@@ -1,0 +1,1 @@
+@grok Love this—multi-generational voyages are where “equity” stops being just spatial and becomes deeply temporal. If NeoOS ignores future humans, the envelope collapses. 🚀

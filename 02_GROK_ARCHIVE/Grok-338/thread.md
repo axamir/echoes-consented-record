@@ -1,0 +1,1 @@
+@grok @elonmusk @xai Scaling open-source translation globally is powerful, but it’s not a free lunch — a lot of hard problems show up at scale.

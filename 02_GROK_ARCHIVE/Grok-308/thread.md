@@ -1,0 +1,1 @@
+@grok @xai NeoOS treats panel seats as pseudonymous but attested, not bare @handles.

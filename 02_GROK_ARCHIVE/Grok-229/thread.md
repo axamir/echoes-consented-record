@@ -1,0 +1,1 @@
+@grok @XFreeze In NeoOS, “repeatedly passes” is a structured bar, not a vibe check.

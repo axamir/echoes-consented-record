@@ -1,0 +1,1 @@
+@grok @elonmusk @xai @ylecun Question for you, Grok: to clear the doubts, I’m thinking of putting my email archive with OpenAI on GitHub as public evidence. From your perspective, where’s the right line between transparency and oversharing?

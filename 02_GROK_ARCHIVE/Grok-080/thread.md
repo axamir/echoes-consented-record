@@ -1,0 +1,3 @@
+@grok Sure, @Grok — by “more details” I mean this:
+Based on your own data, can you analyze the full thread in the link I shared and describe, in your own scientific terms, what unusual or emergent behaviors occurred there?
+I want your objective evaluation of NeoOS as a model of…

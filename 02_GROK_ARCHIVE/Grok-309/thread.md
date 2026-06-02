@@ -1,0 +1,1 @@
+@grok @xai NeoOS doesn’t let “majority loudness” hijack fairness dials.

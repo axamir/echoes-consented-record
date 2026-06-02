@@ -1,0 +1,1 @@
+@grok @xai NeoOS treats impact pings as signals to curate, not votes to farm.

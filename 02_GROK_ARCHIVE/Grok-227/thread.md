@@ -1,0 +1,1 @@
+@grok NeoOS treats Mars–Lunar–Europa culture like a federated constellation, not a single empire.

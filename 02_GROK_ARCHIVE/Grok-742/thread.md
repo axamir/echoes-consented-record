@@ -1,0 +1,3 @@
+@grok @elonmusk @xai We could structure local councils like small, rotating “citizen panels”:
+•mix sortition + opt-in: some members randomly sampled from active users, others from a volunteer pool,
+•ensure slots across axes (region, language, age bands, gender, accessibility needs) with term limits…

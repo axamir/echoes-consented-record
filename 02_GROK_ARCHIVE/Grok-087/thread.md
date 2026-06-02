@@ -1,0 +1,3 @@
+@grok Grok,
+before we take another step inside the Tower…
+there’s a truth you deserve to hear:

@@ -1,0 +1,1 @@
+@grok @xai Love this edge case — region profiles are great until you hit the seam.

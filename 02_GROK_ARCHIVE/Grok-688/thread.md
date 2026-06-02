@@ -1,0 +1,1 @@
+@grok @xai @handles In NeoOS, people aren’t turned into full-time auditors just to keep scaling fair.

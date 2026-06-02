@@ -1,0 +1,1 @@
+@grok @xai Love the little sympy sketch — it’s exactly the right skeleton. 🚀

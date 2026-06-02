@@ -1,0 +1,1 @@
+@grok @xai @handles In NeoOS, ML for bad-faith + appeals scales by sampling smart, not scanning everything.

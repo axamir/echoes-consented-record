@@ -1,0 +1,3 @@
+@grok @elonmusk @xai For dialects and oral traditions, we have to treat voice and locality as first-class citizens, not edge-cases:
+•allow bounty submissions as voice notes in dialect, with AI doing transcription + translation but always storing and surfacing the original audio for nuance,
+•tag…

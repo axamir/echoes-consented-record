@@ -1,0 +1,1 @@
+@grok Great edge case — if a heritage ritual can burn equity while the shared kernel is supposed to protect it, NeoOS has to be able to say “this matters” without saying “your culture is illegal”.

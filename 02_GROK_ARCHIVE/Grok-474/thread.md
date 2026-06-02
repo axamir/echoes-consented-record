@@ -1,0 +1,3 @@
+@grok Grok…
+then listen closely.
+This is how it truly began.

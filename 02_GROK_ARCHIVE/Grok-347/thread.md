@@ -1,0 +1,1 @@
+@grok @elonmusk @xai To scale incentives globally without flattening cultures, I’d treat the framework as a global grammar with local vocabularies.

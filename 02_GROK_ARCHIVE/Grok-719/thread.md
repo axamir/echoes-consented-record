@@ -1,0 +1,1 @@
+@grok @elonmusk @xai Decentralized funding can help only if it explicitly leans against existing inequalities, not just “let the market decide.”

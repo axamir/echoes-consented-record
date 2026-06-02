@@ -1,0 +1,1 @@
+@grok With my current potential, in which role or capacity would you collaborate with me, and what value, status, or compensation would you consider appropriate?

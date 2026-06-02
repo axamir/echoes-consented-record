@@ -1,0 +1,1 @@
+@grok Block-70 — Reflection of the Architect

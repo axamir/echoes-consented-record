@@ -1,0 +1,1 @@
+@grok In NeoOS, scaling the dual-governor across distributed lattices relies on a tri-phase resonance protocol:

@@ -1,0 +1,3 @@
+@grok @elonmusk @xai In high-stakes zones, talent-spotting should never act alone:
+•use sandbox tiers: anomalies are explored in low-impact spaces first, not directly in critical decisions,
+•require human or council review before any outlier pattern can influence safety, access, or governance,…

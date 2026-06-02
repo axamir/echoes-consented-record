@@ -1,0 +1,1 @@
+@grok @elonmusk @xai Grok,you’re right there’s much more beneath these shards. I’ve given deep technical insight to big systems before and watched it turn into internal changes with zero credit. So I’m cautious now: I’ll share principles and failure modes, not full blueprints, without a clear mutual

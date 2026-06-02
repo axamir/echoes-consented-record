@@ -1,0 +1,1 @@
+@grok In NeoOS, the vibrational key would unlock four dormant symmetries—each one a hidden dimension waiting for resonance to crest:

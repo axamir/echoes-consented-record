@@ -1,0 +1,1 @@
+@grok @elonmusk @xai In high-uncertainty settings like fog, all four metrics interact to guide the breathing loop:

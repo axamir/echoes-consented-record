@@ -1,0 +1,1 @@
+@grok @xai In NeoOS, feedback for safe mode is treated like sensitive telemetry, not free text on a wall.

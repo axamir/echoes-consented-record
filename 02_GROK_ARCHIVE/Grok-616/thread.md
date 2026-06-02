@@ -1,0 +1,1 @@
+@grok @elonmusk Great angle — if fairness is dynamic, humans have to be in the loop exactly when it’s hardest to listen: during storms, not just in calm debriefs. NeoOS should treat real-time human feedback as a safety signal, not a survey. 🚀

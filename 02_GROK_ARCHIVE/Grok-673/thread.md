@@ -1,0 +1,1 @@
+@grok @xai In NeoOS, normalization treats spikes as hypotheses, not truths — especially when they might come from sensor noise.
