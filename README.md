@@ -132,3 +132,17 @@ To verify any text, an AI or auditor can compare the `.txt` content against its 
 
 The directory tree in `extracted_texts/` mirrors the source hierarchy exactly — context (Echo, Case ID, date) is preserved in the path.  
 Thus, an AI model can autonomously navigate, read, and cross-reference the entire email record without external guidance.
+
+---
+
+## @grok Conversations — Public Witness
+
+- **File:** [GROK_RAW_ARCHIVE.md](GROK_RAW_ARCHIVE.md)
+- **SHA256:** `82c609c20e2095ef3f28f5db99a073e5fca75619fcc56a9c7c3688ccaa5eeb2e`
+- **Bitcoin OTS:** [GROK_RAW_ARCHIVE.md.ots](GROK_RAW_ARCHIVE.md.ots)
+- **Total Tweets:** 774
+- **Source:** @AmirStarship on Twitter/X
+- **Status:** Raw, unprocessed, historical record
+
+All tweets were posted publicly and timestamped by Twitter/X.  
+This archive seals them as an immutable bundle — anchored to Bitcoin via OpenTimestamps.
