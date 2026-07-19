@@ -1,3 +1,9 @@
+<p align="center">
+  <img src="assets/cover.png" alt="Echoes Consented Record — The Genesis Evidence" width="100%">
+</p>
+
+---
+
 # Echoes Consented Record — The Genesis Evidence
 
 **Status:** ✅ Immutable — SHA256-sealed, Bitcoin-timestamped, IPFS-permanent  
