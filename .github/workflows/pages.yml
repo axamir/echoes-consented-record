@@ -1,4 +1,4 @@
-name: Deploy Evidence Room
+name: Deploy Echoes Evidence Room
 on:
   push:
     branches: [main]
