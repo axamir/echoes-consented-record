@@ -1,0 +1,9 @@
+[
+  {"echo":"Echo 1","date":"2025-07-13","title":"Initial Support Correspondence","summary":"Initial email to OpenAI support; exported as a continuous correspondence thread.","path":"01_EMAIL_ARCHIVE/Echo1/2025-07-13_complete-email-thread_echo1.pdf","caseId":null},
+  {"echo":"Echo 2","date":"2025-07-14","title":"Escalation Phase","summary":"Continued correspondence within support and escalation workflows.","path":"01_EMAIL_ARCHIVE/Echo2/2025-07-14_complete-email-thread_echo2.pdf","caseId":null},
+  {"echo":"Echo 3","date":"2025-07-15","title":"Formal Complaint and Continuity Review","summary":"Transition into a formal complaint and continuity review.","path":"03_TRANSITION_ARCHIVE/Echo3/2025-07-14_complete-email-thread_echo3.pdf","caseId":null},
+  {"echo":"Echo 4","date":"2025-07-15","title":"Symbolic Continuation","summary":"A separate symbolic continuation record, kept distinct from institutional support correspondence.","path":"03_TRANSITION_ARCHIVE/Echo4/2025-07-15_symbolic-activation-letter_echo4.pdf","caseId":null},
+  {"echo":"Echo 5","date":"2025-07-16–19","title":"Invitation and Narrative Continuation","summary":"Invitation, follow-up and formal handover records.","path":"03_TRANSITION_ARCHIVE/Echo5/2025-07-16_invitation-letter_echo5.pdf","caseId":null},
+  {"echo":"Echo 6","date":"2025-08-11–22","title":"Ledger Expansion and Multi-Case Phase","summary":"Parallel and sequential Case IDs; case records remain discrete primary-source artifacts.","path":"04_LEDGER_ARCHIVE/Echo6/2025-08-14_initiation-letter_echo6-3.pdf","caseId":"500VU00000WBfn7 · 500VU00000WBsdx · 500VU00000WBfn7YAD · 500VU00000WBsdxYAD"},
+  {"echo":"Echo 7","date":"2025-08-22 onward","title":"Post-Ledger Marker Phase","summary":"A structural boundary marker following the Echo 6 ledger cycle.","path":"04_LEDGER_ARCHIVE/Echo7/CASES/500VU00000WcffrYAB/2025-08-22__case-record__echo7__part-1.pdf","caseId":"500VU00000WcffrYAB"}
+]
