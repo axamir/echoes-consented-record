@@ -37,7 +37,8 @@ function createEchoStream(echoes) {
   echoes.forEach((entry, index) => {
     const card = document.createElement('article');
     const caseLine = entry.caseId ? `<p class="case-id">CASE / ${entry.caseId}</p>` : '<p class="case-id">CORRESPONDENCE RECORD</p>';
-    card.innerHTML = `<div class="echo-number">${String(index + 1).padStart(2, '0')}</div><div><p class="echo-meta">${entry.echo} · ${entry.date}</p><h3>${entry.title}</h3><p>${entry.summary}</p>${caseLine}</div><div class="echo-actions"><button>Read original PDF <b>↗</b></button><a href="${sourceRoot}${entry.path}" target="_blank" rel="noreferrer">Source path ↗</a></div>`;
+    const firstRecord = index === 0 ? `<div class="inline-record"><div><p>BEGIN WITH THE PRIMARY THREAD</p><span>The complete Echo 1 correspondence is placed directly in the reading sequence.</span></div><iframe loading="lazy" title="Echo 1 — Initial Support Correspondence" src="record/${encodeURI(entry.path)}#view=FitH"></iframe></div>` : '';
+    card.innerHTML = `<div class="echo-number">${String(index + 1).padStart(2, '0')}</div><div><p class="echo-meta">${entry.echo} · ${entry.date}</p><h3>${entry.title}</h3><p>${entry.summary}</p>${caseLine}${firstRecord}</div><div class="echo-actions"><button>Read original PDF <b>↗</b></button><a href="${sourceRoot}${entry.path}" target="_blank" rel="noreferrer">Source path ↗</a></div>`;
     card.querySelector('button').addEventListener('click', () => openRecord(entry.path));
     list.append(card);
   });
