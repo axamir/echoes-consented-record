@@ -45,8 +45,26 @@ function createEchoStream(echoes) {
   document.querySelector('.boundary').before(section);
 }
 
+function createLedger(records) {
+  const section = document.createElement('section');
+  section.className = 'archive-ledger';
+  section.id = 'archive-ledger';
+  section.innerHTML = `<div class="ledger-intro"><p>COMPLETE SOURCE LEDGER</p><h2>${records.length} documents, available inside this room.</h2><p>Search by date, Echo, Case ID, or filename. Selecting a record opens its original PDF here; no conclusion is inferred from its inclusion.</p></div><label class="ledger-search">Search the source ledger <input type="search" placeholder="e.g. Echo 6, 500VU, 2025-08-17" autocomplete="off"></label><div class="ledger-results"></div>`;
+  const results = section.querySelector('.ledger-results');
+  const draw = (query = '') => {
+    const normalized = query.trim().toLowerCase();
+    const visible = records.filter((record) => !normalized || Object.values(record).filter(Boolean).join(' ').toLowerCase().includes(normalized));
+    results.innerHTML = visible.length ? visible.map((record, index) => `<button class="ledger-row" data-path="${record.path}"><span>${String(index + 1).padStart(2, '0')}</span><span><b>${record.echo}</b><em>${record.date}</em></span><strong>${record.title}</strong><small>${record.caseId ? `CASE / ${record.caseId}` : 'PRIMARY / SUPPORTING RECORD'}</small><i>Open PDF ↗</i></button>`).join('') : '<p class="ledger-empty">No record matches that search.</p>';
+    results.querySelectorAll('[data-path]').forEach((button) => button.addEventListener('click', () => openRecord(button.dataset.path)));
+  };
+  section.querySelector('input').addEventListener('input', (event) => draw(event.target.value));
+  draw();
+  document.querySelector('.boundary').before(section);
+}
+
 document.querySelectorAll('[data-doc]').forEach((button) => button.addEventListener('click', () => openRecord(button.dataset.doc)));
 document.querySelector('.open').addEventListener('click', () => openRecord('INDEX.md'));
 dialog.querySelector('.close').addEventListener('click', () => dialog.close());
 dialog.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
 fetch('echoes.json').then((response) => response.json()).then(createEchoStream).catch(() => {});
+fetch('archive-ledger.json').then((response) => response.json()).then(createLedger).catch(() => {});
