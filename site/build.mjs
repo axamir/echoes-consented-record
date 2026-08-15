@@ -29,7 +29,7 @@ function recordMetadata(path) {
 }
 
 await mkdir(out, { recursive: true });
-for (const file of ['index.html', 'style.css', 'ledger.css', 'app.js', 'echoes.json']) {
+for (const file of ['index.html', 'style.css', 'ledger.css', 'app.js', 'echoes.json', 'favicon.svg', 'robots.txt', 'sitemap.xml']) {
   await cp(join(site, file), join(out, file));
 }
 await cp(join(root, 'assets'), join(out, 'assets'), { recursive: true });
